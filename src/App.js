@@ -8,18 +8,19 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route, BrowserRouter } from 'react-router-dom';
 
+function App(props) {
 
-function App() {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Navigation />
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsData}
+           messagesData={props.messagesData} />} />
+          <Route path='/profile' render={() => <Profile postsData={props.postsData} />} />
           <Route path='/newsLenta' component={News} />
-          <Route path='/musicList' component={Music}/>
+          <Route path='/musicList' component={Music} />
         </div>
       </div>
     </BrowserRouter>
