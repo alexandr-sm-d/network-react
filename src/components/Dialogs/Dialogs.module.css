@@ -16,3 +16,9 @@
     background-color: darkseagreen;
     padding: 10px;
 }
+
+.dialogItem {
+    border: 1px solid red;
+    margin-bottom: 3px;
+    padding: 5px 5px;
+}

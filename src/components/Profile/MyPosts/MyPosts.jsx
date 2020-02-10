@@ -9,7 +9,7 @@ const MyPosts = () => {
         {id:1, message:'its my firsr react project', likeCounts: 10}
     ]
 
-    let posts = postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />)
+    let posts = postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />);
 
     return (
         <div className={classesStyle.myPost}>
