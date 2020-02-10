@@ -1,0 +1,18 @@
+.dialogsWrapper {
+    display: grid;
+    grid-template-columns: 5fr 15fr;
+}
+
+.dialogUsers {
+    background-color: darksalmon;
+    padding: 10px;
+}
+
+.dialogUsers .active {
+    color: gold;
+}
+
+.dialogMessages {
+    background-color: darkseagreen;
+    padding: 10px;
+}
