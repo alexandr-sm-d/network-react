@@ -5,8 +5,8 @@ import MessageItem from './MessageItem/MessageItem';
 
 const Dialogs = (props) => {
 
-    let dialogs = props.dialogsData.map((user) => <DialogItem name={user.name} id={user.id} />);
-    let messages = props.messagesData.map((mes) => <MessageItem message={mes.message} />);
+    let dialogs = props.state.dialogsData.map((user) => <DialogItem name={user.name} id={user.id} />);
+    let messages = props.state.messagesData.map((mes) => <MessageItem message={mes.message} />);
 
     return (
         <div className={classesStyle.dialogsWrapper}>
