@@ -1,10 +1,23 @@
+import { rerenderApp } from "./../render.js";
+
 const state = {
 
     profilePage: {
         postsData: [
             { id: 1, message: 'hi everyone!', likeCounts: 12 },
-            { id: 1, message: 'its my firsr react project', likeCounts: 10 }
+            { id: 2, message: 'its my firsr react project', likeCounts: 10 }
         ],
+
+        newPost: function (postMessage) {
+            this.postsData.push(
+                {
+                    id: 3,
+                    message: postMessage,
+                    likeCounts: 10
+                }
+            );
+            rerenderApp(state);
+        }
     },
 
     dialogsPage: {
