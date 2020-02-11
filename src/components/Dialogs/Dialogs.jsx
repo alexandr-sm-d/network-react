@@ -5,6 +5,12 @@ import MessageItem from './MessageItem/MessageItem';
 
 const Dialogs = (props) => {
 
+    let newMessageElement = React.createRef()
+
+    function addMessage() {
+        alert(newMessageElement.current.value)
+    }
+
     let dialogs = props.state.dialogsData.map((user) => <DialogItem name={user.name} id={user.id} />);
     let messages = props.state.messagesData.map((mes) => <MessageItem message={mes.message} />);
 
@@ -15,6 +21,7 @@ const Dialogs = (props) => {
             </div>
             <div className={classesStyle.dialogMessages}>
                 {messages}
+                <textarea ref={newMessageElement}></textarea>
             </div>
         </div>
     )

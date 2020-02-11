@@ -3,7 +3,13 @@ import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-    
+
+    let newPostElement = React.createRef();
+
+    function addPost() {
+        alert(newPostElement.current.value)
+    };
+
     let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />);
 
     return (
@@ -11,10 +17,10 @@ const MyPosts = (props) => {
             <h2>My posts</h2>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick = {addPost}>Add post</button>
                 </div>
             </div>
             <div className={classesStyle.posts}>
