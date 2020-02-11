@@ -9,14 +9,26 @@ const state = {
         ],
 
         newPost: function (postMessage) {
+            let saveThis = this;
+
+            function detectorID() {
+                let num = saveThis.postsData.length - 1;
+                return saveThis.postsData[num].id + 1;
+            };
+
+            function randomCountLikes() {
+                return Math.round(100*Math.random())
+            }
+
             this.postsData.push(
                 {
-                    id: 3,
+                    id: detectorID(),
                     message: postMessage,
-                    likeCounts: 10
+                    likeCounts: randomCountLikes()
                 }
             );
             rerenderApp(state);
+            console.log(saveThis.postsData);
         }
     },
 
