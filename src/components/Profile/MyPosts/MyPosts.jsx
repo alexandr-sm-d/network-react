@@ -3,7 +3,7 @@ import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-
+    console.log(props);
     let newPostElement = React.createRef();
 
     function addPost() {
@@ -18,10 +18,13 @@ const MyPosts = (props) => {
             <h2>My posts</h2>
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea
+                        ref={newPostElement}
+                        value={props.newPostText}>                        
+                    </textarea>
                 </div>
                 <div>
-                    <button onClick = {addPost}>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={classesStyle.posts}>

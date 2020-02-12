@@ -9,6 +9,7 @@ import Music from './components/Music/Music';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 function App(props) {
+  console.log(props.state.profilePage)
   return (
     <BrowserRouter>
       <div className='app-wrapper'>

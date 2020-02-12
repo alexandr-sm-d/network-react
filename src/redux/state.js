@@ -29,7 +29,9 @@ const state = {
             );
             rerenderApp(state);
             console.log(saveThis.postsData);
-        }
+        },
+
+        newPostText:'fuck',
     },
 
     dialogsPage: {
