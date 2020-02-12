@@ -7,9 +7,9 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route, BrowserRouter } from 'react-router-dom';
+import { updateTextPost } from './redux/state';
 
 function App(props) {
-  console.log(props.state.profilePage)
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -17,8 +17,10 @@ function App(props) {
         <Navigation />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}
-           messagesData={props.state.messagesData} />} />
-          <Route path='/profile' render={() => <Profile state={props.state.profilePage} />} />
+            messagesData={props.state.messagesData} />} />
+          <Route path='/profile' render={() => <Profile
+            state={props.state.profilePage}
+            update={updateTextPost} />} />
           <Route path='/newsLenta' component={News} />
           <Route path='/musicList' component={Music} />
         </div>

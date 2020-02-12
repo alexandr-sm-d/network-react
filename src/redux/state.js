@@ -8,7 +8,7 @@ const state = {
             { id: 2, message: 'its my firsr react project', likeCounts: 10 }
         ],
 
-        newPost: function (postMessage) {
+        newPost: function () {
             let saveThis = this;
 
             function detectorID() {
@@ -17,21 +17,23 @@ const state = {
             };
 
             function randomCountLikes() {
-                return Math.round(100*Math.random())
+                return Math.round(100 * Math.random())
             }
 
             this.postsData.push(
                 {
                     id: detectorID(),
-                    message: postMessage,
+                    message: state.profilePage.newPostText,
                     likeCounts: randomCountLikes()
                 }
             );
+            
+            state.profilePage.newPostText = ''
             rerenderApp(state);
-            console.log(saveThis.postsData);
         },
 
-        newPostText:'fuck',
+        newPostText: '',
+
     },
 
     dialogsPage: {
@@ -49,5 +51,10 @@ const state = {
     },
 
 };
+
+export let updateTextPost = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderApp(state);
+}
 
 export default state;
