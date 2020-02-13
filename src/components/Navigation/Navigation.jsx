@@ -18,7 +18,7 @@ const Navigation = () => {
                 <NavLink to='/musicList' activeClassName={classesStyle.activeLink}>Music</NavLink>
             </div>
             <div className={classesStyle.item}>
-                <a>Settings</a>
+            <NavLink to='/settingsApp' activeClassName={classesStyle.activeLink}>Music</NavLink>
             </div>
         </nav>
     )

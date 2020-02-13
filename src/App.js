@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { updateTextPost } from './redux/state';
+import Settings from './components/Settings/Settings';
 
 function App(props) {
   return (
@@ -23,6 +24,7 @@ function App(props) {
             update={updateTextPost} />} />
           <Route path='/newsLenta' component={News} />
           <Route path='/musicList' component={Music} />
+          <Route path='/settingsApp' component={Settings} />
         </div>
       </div>
     </BrowserRouter>
