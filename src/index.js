@@ -6,10 +6,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 function rerenderApp(state) {
-    ReactDOM.render(<App state={state}/>, document.getElementById('root'));
+    ReactDOM.render(<App state={state} />, document.getElementById('root'));
 }
 
 rerenderApp(state);
+
+
 subscribe(rerenderApp);
 
 // If you want your app to work offline and load faster, you can change
