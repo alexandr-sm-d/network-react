@@ -1,4 +1,8 @@
-import { rerenderApp } from "./../render.js";
+//rerenderApp ниже - заглушка, чтобы потом переопределить
+
+let rerenderApp = () => {
+    console.log('hi-hi!')
+}
 
 const state = {
 
@@ -27,7 +31,7 @@ const state = {
                     likeCounts: randomCountLikes()
                 }
             );
-            
+
             state.profilePage.newPostText = ''
             rerenderApp(state);
         },
@@ -52,9 +56,15 @@ const state = {
 
 };
 
+window.state = state;
+
 export let updateTextPost = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderApp(state);
+};
+
+export const subscribe = (observer) => {
+    rerenderApp = observer;
 }
 
 export default state;
