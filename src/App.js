@@ -11,20 +11,33 @@ import { updateTextPost } from './redux/state';
 import Settings from './components/Settings/Settings';
 
 function App(props) {
+  console.log(props.store.getState())
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Navigation />
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}
+
+
+
+
+          <Route path='/profile' render={() => 
+            <Profile
+
+              state={props.store.getState().profilePage}
+              update={props.store.updateTextPost.bind(props.store)} />}
+
+          />
+
+
+
+
+          {/* <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}
             messagesData={props.state.messagesData} />} />
-          <Route path='/profile' render={() => <Profile
-            state={props.state.profilePage}
-            update={updateTextPost} />} />
           <Route path='/newsLenta' component={News} />
           <Route path='/musicList' component={Music} />
-          <Route path='/settingsApp' component={Settings} />
+          <Route path='/settingsApp' component={Settings} /> */}
         </div>
       </div>
     </BrowserRouter>
