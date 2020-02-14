@@ -30,33 +30,36 @@ let store = {
         return this._state;
     },
 
-    // newPost: function () {
-    //     let saveThis = this;
+    newPost: function () {
+        console.log(this)
+        let saveThis = this;
 
-    //     function detectorID() {
-    //         let num = saveThis.postsData.length - 1;
-    //         return saveThis.postsData[num].id + 1;
-    //     };
+        function detectorID() {
+            let num = saveThis.getState().profilePage.postsData.length - 1;
+            return saveThis.getState().profilePage.postsData[num].id + 1;
+        };
 
-    //     function randomCountLikes() {
-    //         return Math.round(100 * Math.random())
-    //     }
+        function randomCountLikes() {
+            return Math.round(100 * Math.random())
+        }
 
-    //     this.postsData.push(
-    //         {
-    //             id: detectorID(),
-    //             message: state.profilePage.newPostText,
-    //             likeCounts: randomCountLikes()
-    //         }
-    //     );
+        this.getState().profilePage.postsData.push(
+            {
+                id: detectorID(),
+                message: this.getState().profilePage.newPostText,
+                likeCounts: randomCountLikes(),
+            }
+        );
 
-    //     state.profilePage.newPostText = ''
-    //     rerenderApp(state);
-    // },
+        this.getState().profilePage.newPostText = ''
+        this.rerenderApp(store);
+
+        console.log('newPost is work!');
+    },
 
     updateTextPost (newText) {
         // debugger;
-        this._state.profilePage.newPostText = newText;
+        this.getState().profilePage.newPostText = newText;
         this.rerenderApp(store);
     },
 

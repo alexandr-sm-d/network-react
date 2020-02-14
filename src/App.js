@@ -11,7 +11,7 @@ import { updateTextPost } from './redux/state';
 import Settings from './components/Settings/Settings';
 
 function App(props) {
-  console.log(props.store.getState())
+  // console.log(props.store.getState())
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -26,7 +26,8 @@ function App(props) {
             <Profile
 
               state={props.store.getState().profilePage}
-              update={props.store.updateTextPost.bind(props.store)} />}
+              update={props.store.updateTextPost.bind(props.store)}
+              newPost={props.store.newPost.bind(props.store)} />}
 
           />
 
