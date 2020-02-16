@@ -34,6 +34,10 @@ let store = {
         console.log(this)
         let saveThis = this;
 
+        // if (this.getState().profilePage.newPostText == '') {
+        //     return;
+        // }
+
         function detectorID() {
             let num = saveThis.getState().profilePage.postsData.length - 1;
             return saveThis.getState().profilePage.postsData[num].id + 1;

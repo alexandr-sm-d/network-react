@@ -8,7 +8,7 @@ const Navigation = () => {
             <div className={classesStyle.item}>
                 <NavLink to='/profile' activeClassName={classesStyle.activeLink}>Profile</NavLink>
             </div>
-            {/* <div className={classesStyle.item}>
+            <div className={classesStyle.item}>
                 <NavLink to='/dialogs' activeClassName={classesStyle.activeLink}>Message</NavLink>
             </div>
             <div className={classesStyle.item}>
@@ -19,7 +19,7 @@ const Navigation = () => {
             </div>
             <div className={classesStyle.item}>
             <NavLink to='/settingsApp' activeClassName={classesStyle.activeLink}>Settings</NavLink>
-            </div> */}
+            </div>
         </nav>
     )
 }

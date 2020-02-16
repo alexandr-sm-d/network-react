@@ -10,8 +10,6 @@ const MyPosts = (props) => {
     function addPost() {
         // debugger;
         props.newPost();
-        // props.updateData('');
-        // props.newPostText = ''
     };
 
     let changeValueTextarea = () => {
