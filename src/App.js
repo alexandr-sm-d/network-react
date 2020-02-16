@@ -10,7 +10,6 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 
 function App(props) {
-  // console.log(props.store.getState())
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -19,8 +18,7 @@ function App(props) {
         <div className='app-wrapper-content'>
           <Route path='/profile' render={() => <Profile
             state={props.store.getState().profilePage}
-            update={props.store.updateTextPost.bind(props.store)}
-            newPost={props.store.newPost.bind(props.store)} />} />
+            dispatch={props.store.dispatch.bind(props.store)} />} />
           <Route path='/dialogs' render={() => <Dialogs state={props.store.getState().dialogsPage}
             messagesData={props.store.getState().messagesData} />} />
           <Route path='/newsLenta' component={News} />

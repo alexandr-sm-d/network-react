@@ -30,42 +30,38 @@ let store = {
         return this._state;
     },
 
-    newPost: function () {
-        console.log(this)
-        let saveThis = this;
+    // newPost: function () {
+    //     let saveThis = this;
 
-        // if (this.getState().profilePage.newPostText == '') {
-        //     return;
-        // }
+    //     // if (this.getState().profilePage.newPostText == '') {
+    //     //     return;
+    //     // }
 
-        function detectorID() {
-            let num = saveThis.getState().profilePage.postsData.length - 1;
-            return saveThis.getState().profilePage.postsData[num].id + 1;
-        };
+    //     function detectorID() {
+    //         let num = saveThis.getState().profilePage.postsData.length - 1;
+    //         return saveThis.getState().profilePage.postsData[num].id + 1;
+    //     };
 
-        function randomCountLikes() {
-            return Math.round(100 * Math.random())
-        }
+    //     function randomCountLikes() {
+    //         return Math.round(100 * Math.random())
+    //     }
 
-        this.getState().profilePage.postsData.push(
-            {
-                id: detectorID(),
-                message: this.getState().profilePage.newPostText,
-                likeCounts: randomCountLikes(),
-            }
-        );
+    //     this.getState().profilePage.postsData.push(
+    //         {
+    //             id: detectorID(),
+    //             message: this.getState().profilePage.newPostText,
+    //             likeCounts: randomCountLikes(),
+    //         }
+    //     );
 
-        this.getState().profilePage.newPostText = ''
-        this.rerenderApp(store);
+    //     this.getState().profilePage.newPostText = ''
+    //     this.rerenderApp(store);
+    // },
 
-        console.log('newPost is work!');
-    },
-
-    updateTextPost (newText) {
-        // debugger;
-        this.getState().profilePage.newPostText = newText;
-        this.rerenderApp(store);
-    },
+    // updateTextPost (newText) {
+    //     this.getState().profilePage.newPostText = newText;
+    //     this.rerenderApp(store);
+    // },
 
     rerenderApp () {
         console.log('hi-hi!');
@@ -73,6 +69,43 @@ let store = {
 
     subscribe (observer) {
         this.rerenderApp = observer;
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST' :
+                let saveThis = this;
+
+                if (this.getState().profilePage.newPostText == '') {
+                    return;
+                }
+        
+                function detectorID() {
+                    let num = saveThis.getState().profilePage.postsData.length - 1;
+                    return saveThis.getState().profilePage.postsData[num].id + 1;
+                };
+        
+                function randomCountLikes() {
+                    return Math.round(100 * Math.random())
+                }
+        
+                this.getState().profilePage.postsData.push(
+                    {
+                        id: detectorID(),
+                        message: this.getState().profilePage.newPostText,
+                        likeCounts: randomCountLikes(),
+                    }
+                );
+        
+                this.getState().profilePage.newPostText = ''
+                this.rerenderApp(store);
+                break;
+
+            case 'UPDATE-NEW-TEXT-POST':
+                this.getState().profilePage.newPostText = action.newText;
+                this.rerenderApp(store);
+                break;
+        }
     }
 }
 
