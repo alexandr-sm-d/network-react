@@ -1,22 +1,19 @@
 import React from 'react';
 import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
-
+import {addNewPost, updateNewPostText} from './../../../redux/state.js'
 
 const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
 
     function addPost() {
-        // props.newPost();
-        props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addNewPost())
     };
 
     let changeValueTextarea = () => {
-        console.log(newPostElement.current.value);
         let text = newPostElement.current.value;
-        // props.updateData(newPostElement.current.value);
-        props.dispatch({type: 'UPDATE-NEW-TEXT-POST', newText: text})
+        props.dispatch(updateNewPostText(text))
     }
 
 
