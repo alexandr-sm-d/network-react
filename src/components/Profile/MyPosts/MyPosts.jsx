@@ -1,7 +1,7 @@
 import React from 'react';
 import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
-import {addNewPost, updateNewPostText} from './../../../redux/state.js'
+import {addNewPost, updateNewPostText} from './../../../redux/redusers/reduser-profilePage.js'
 
 const MyPosts = (props) => {
 
@@ -14,8 +14,7 @@ const MyPosts = (props) => {
     let changeValueTextarea = () => {
         let text = newPostElement.current.value;
         props.dispatch(updateNewPostText(text))
-    }
-
+    };
 
     let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />);
 

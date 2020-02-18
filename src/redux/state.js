@@ -1,9 +1,7 @@
-//rerenderApp ниже - заглушка, чтобы потом переопределить
+import reduserDialogsPage from "./redusers/reduser-dialogsPage";
+import reduserProfilePage from "./redusers/reduser-profilePage";
 
-const ADD_POST = 'ADD_POST';
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
-const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE_NEW_TEXT_MESSAGE';
+//rerenderApp ниже - заглушка, чтобы потом переопределить.
 
 let store = {
     _state: {
@@ -35,39 +33,6 @@ let store = {
         return this._state;
     },
 
-    // newPost: function () {
-    //     let saveThis = this;
-
-    //     // if (this.getState().profilePage.newPostText == '') {
-    //     //     return;
-    //     // }
-
-    //     function detectorID() {
-    //         let num = saveThis.getState().profilePage.postsData.length - 1;
-    //         return saveThis.getState().profilePage.postsData[num].id + 1;
-    //     };
-
-    //     function randomCountLikes() {
-    //         return Math.round(100 * Math.random())
-    //     }
-
-    //     this.getState().profilePage.postsData.push(
-    //         {
-    //             id: detectorID(),
-    //             message: this.getState().profilePage.newPostText,
-    //             likeCounts: randomCountLikes(),
-    //         }
-    //     );
-
-    //     this.getState().profilePage.newPostText = ''
-    //     this.rerenderApp(store);
-    // },
-
-    // updateTextPost (newText) {
-    //     this.getState().profilePage.newPostText = newText;
-    //     this.rerenderApp(store);
-    // },
-
     rerenderApp() {
         console.log('hi-hi!');
     },
@@ -77,82 +42,11 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST: {
-                let saveThis = this;
-
-                if (this.getState().profilePage.newPostText == '') {
-                    return;
-                }
-
-                function detectorID() {
-                    let num = saveThis.getState().profilePage.postsData.length - 1;
-                    return saveThis.getState().profilePage.postsData[num].id + 1;
-                };
-
-                function randomCountLikes() {
-                    return Math.round(100 * Math.random())
-                }
-
-                this.getState().profilePage.postsData.push(
-                    {
-                        id: detectorID(),
-                        message: this.getState().profilePage.newPostText,
-                        likeCounts: randomCountLikes(),
-                    }
-                );
-
-                this.getState().profilePage.newPostText = '';
-                this.rerenderApp(store);
-                break;
-            }
-
-            case UPDATE_NEW_TEXT_POST: {
-                this.getState().profilePage.newPostText = action.newText;
-                this.rerenderApp(store);
-                break;
-            }
-
-            case SEND_MESSAGE: {
-                let saveThis = this;
-
-                if (this.getState().dialogsPage.newMessageText == '') {
-                    return;
-                }
-
-                function detectorID() {
-                    let num = saveThis.getState().dialogsPage.messagesData.length - 1;
-                    return saveThis.getState().dialogsPage.messagesData[num].id + 1;
-                };
-
-                this.getState().dialogsPage.messagesData.push(
-                    {
-                        id: detectorID(),
-                        message: this.getState().dialogsPage.newMessageText,
-                    }
-                );
-
-                this.getState().dialogsPage.newMessageText = ''
-                this.rerenderApp(store);
-                break;
-            }
-
-            case UPDATE_NEW_TEXT_MESSAGE: {
-                this.getState().dialogsPage.newMessageText = action.newText;
-                this.rerenderApp(store);
-                break;
-            }
-        }
+        this.getState().profilePage = reduserProfilePage(this.getState().profilePage, action);
+        this.getState().dialogsPage = reduserDialogsPage(this.getState().dialogsPage, action);
+        this.rerenderApp(store);
     }
 }
 
 export default store;
 window.store = store;
-
-export const addNewPost = () => ({ type: ADD_POST });
-export const updateNewPostText = (text) =>
-    ({ type: UPDATE_NEW_TEXT_POST, newText: text });
-
-export const sendNewMessage = () => ({ type: SEND_MESSAGE });
-export const updateMessageText = (text) =>
-    ({ type: UPDATE_NEW_TEXT_MESSAGE, newText: text })
