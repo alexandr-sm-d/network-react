@@ -4,18 +4,14 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-    // console.log(Object.getOwnPropertyDescriptor(props.state, 'newPostText'))
-
     return (
         <div className={classesStyle.content}>
             <ProfileInfo />
             <MyPosts
                 postsData={props.state.postsData}
-                // newPost={props.newPost}
                 newPostText={props.state.newPostText}
-                // updateData={props.update}
                 dispatch = {props.dispatch}
-                 />
+            />
         </div>
     )
 }

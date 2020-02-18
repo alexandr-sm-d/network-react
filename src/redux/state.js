@@ -1,8 +1,9 @@
 //rerenderApp ниже - заглушка, чтобы потом переопределить
 
 const ADD_POST = 'ADD_POST';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
-
+const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE_NEW_TEXT_MESSAGE';
 
 let store = {
     _state: {
@@ -11,7 +12,6 @@ let store = {
                 { id: 1, message: 'hi everyone!', likeCounts: 12 },
                 { id: 2, message: 'its my firsr react project', likeCounts: 10 }
             ],
-
             newPostText: '',
         },
 
@@ -27,6 +27,7 @@ let store = {
                 { id: 2, message: 'How are you' },
                 { id: 3, message: 'How old are you' },
             ],
+            newMessageText: '',
         },
     },
 
@@ -77,7 +78,7 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case ADD_POST:
+            case ADD_POST: {
                 let saveThis = this;
 
                 if (this.getState().profilePage.newPostText == '') {
@@ -101,14 +102,46 @@ let store = {
                     }
                 );
 
-                this.getState().profilePage.newPostText = ''
+                this.getState().profilePage.newPostText = '';
                 this.rerenderApp(store);
                 break;
+            }
 
-            case UPDATE_NEW_TEXT_POST:
+            case UPDATE_NEW_TEXT_POST: {
                 this.getState().profilePage.newPostText = action.newText;
                 this.rerenderApp(store);
                 break;
+            }
+
+            case SEND_MESSAGE: {
+                let saveThis = this;
+
+                if (this.getState().dialogsPage.newMessageText == '') {
+                    return;
+                }
+
+                function detectorID() {
+                    let num = saveThis.getState().dialogsPage.messagesData.length - 1;
+                    return saveThis.getState().dialogsPage.messagesData[num].id + 1;
+                };
+
+                this.getState().dialogsPage.messagesData.push(
+                    {
+                        id: detectorID(),
+                        message: this.getState().dialogsPage.newMessageText,
+                    }
+                );
+
+                this.getState().dialogsPage.newMessageText = ''
+                this.rerenderApp(store);
+                break;
+            }
+
+            case UPDATE_NEW_TEXT_MESSAGE: {
+                this.getState().dialogsPage.newMessageText = action.newText;
+                this.rerenderApp(store);
+                break;
+            }
         }
     }
 }
@@ -119,3 +152,7 @@ window.store = store;
 export const addNewPost = () => ({ type: ADD_POST });
 export const updateNewPostText = (text) =>
     ({ type: UPDATE_NEW_TEXT_POST, newText: text });
+
+export const sendNewMessage = () => ({ type: SEND_MESSAGE });
+export const updateMessageText = (text) =>
+    ({ type: UPDATE_NEW_TEXT_MESSAGE, newText: text })

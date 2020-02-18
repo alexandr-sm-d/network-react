@@ -25,6 +25,7 @@ const MyPosts = (props) => {
             <div>
                 <div>
                     <textarea
+                        placeholder="Enter your post"
                         ref={newPostElement}
                         value={props.newPostText}
                         onChange={changeValueTextarea}

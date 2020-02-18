@@ -16,11 +16,17 @@ function App(props) {
         <Header />
         <Navigation />
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <Profile
-            state={props.store.getState().profilePage}
-            dispatch={props.store.dispatch.bind(props.store)} />} />
-          <Route path='/dialogs' render={() => <Dialogs state={props.store.getState().dialogsPage}
-            messagesData={props.store.getState().messagesData} />} />
+          <Route path='/profile' render={() =>
+            <Profile
+              state={props.store.getState().profilePage}
+              dispatch={props.store.dispatch.bind(props.store)} />}
+          />
+          <Route path='/dialogs' render={() =>
+            <Dialogs
+              state={props.store.getState().dialogsPage}
+              messagesData={props.store.getState().messagesData}
+              dispatch={props.store.dispatch.bind(props.store)} />}
+          />
           <Route path='/newsLenta' component={News} />
           <Route path='/musicList' component={Music} />
           <Route path='/settingsApp' component={Settings} />
