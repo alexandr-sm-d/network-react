@@ -1,10 +1,18 @@
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
 
-const reduserProfilePage = (state, action) => {
+let initialState = {
+    postsData: [
+        { id: 1, message: 'hi everyone!', likeCounts: 12 },
+        { id: 2, message: 'its my firsr react project', likeCounts: 10 }
+    ],
+    newPostText: '',
+}
+
+const reduserProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            
+
             if (state.newPostText == '') {
                 return state;
             }

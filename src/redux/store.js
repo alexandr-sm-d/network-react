@@ -44,7 +44,7 @@ let store = {
     dispatch(action) {
         this.getState().profilePage = reduserProfilePage(this.getState().profilePage, action);
         this.getState().dialogsPage = reduserDialogsPage(this.getState().dialogsPage, action);
-        this.rerenderApp(store);
+        this.rerenderApp(store); //redux store как аргумент сам не передает!!! нужно вручную (*)
     }
 }
 
