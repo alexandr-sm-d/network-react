@@ -8,12 +8,14 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     function addPost() {
-        props.dispatch(addNewPost())
+        // props.dispatch(addNewPost())
+        props.addPost()
     };
 
     let changeValueTextarea = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPostText(text))
+        // props.dispatch(updateNewPostText(text))
+        props.updatePostContent(text)
     };
 
     let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />);

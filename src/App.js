@@ -16,10 +16,14 @@ function App(props) {
         <Header />
         <Navigation />
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() =>
+          {/* <Route path='/profile' render={() =>
             <Profile
               state={props.store.getState().profilePage}
               dispatch={props.store.dispatch.bind(props.store)} />}
+
+          /> */}
+          <Route path='/profile' render={() =>
+            <Profile store={props.store} />}
           />
           <Route path='/dialogs' render={() =>
             <Dialogs
