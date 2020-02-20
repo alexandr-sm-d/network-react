@@ -4,16 +4,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import StoreContext from './StoreContext.js';
+import { BrowserRouter } from 'react-router-dom';
 
-function rerenderApp(store) {
-    ReactDOM.render(<App store={store} />, document.getElementById('root'));
+function rerenderApp() {
+    ReactDOM.render(
+        <BrowserRouter>
+            <StoreContext.Provider value={store}>
+                <App />
+            </StoreContext.Provider>
+        </BrowserRouter>, document.getElementById('root'));
 }
 
-rerenderApp(store);
+rerenderApp();
 
 
 store.subscribe(
-    () => rerenderApp(store) // смотри store.js (*)
+    () => rerenderApp() // смотри store.js (*)
 );
 
 // If you want your app to work offline and load faster, you can change
