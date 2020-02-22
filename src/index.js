@@ -4,15 +4,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import StoreContext from './StoreContext.js';
+// import StoreContext from './StoreContext.js';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 function rerenderApp() {
     ReactDOM.render(
         <BrowserRouter>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
                 <App />
-            </StoreContext.Provider>
+            </Provider>
         </BrowserRouter>, document.getElementById('root'));
 }
 
