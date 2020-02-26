@@ -12,38 +12,42 @@ let initialState = {
 const reduserProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
+            let stateClone = {...state};
+            stateClone.postsData = [...state.postsData];
 
-            if (state.newPostText == '') {
-                return state;
+            if (stateClone.newPostText == '') {
+                return stateClone;
             }
 
             function detectorID() {
-                let num = state.postsData.length - 1;
-                return state.postsData[num].id + 1;
+                let num = stateClone.postsData.length - 1;
+                return stateClone.postsData[num].id + 1;
             };
 
             function randomCountLikes() {
                 return Math.round(100 * Math.random())
             }
 
-            state.postsData.push(
+            stateClone.postsData.push(
                 {
                     id: detectorID(),
-                    message: state.newPostText,
+                    message: stateClone.newPostText,
                     likeCounts: randomCountLikes(),
                 }
             );
 
-            state.newPostText = '';
-            return state;
+            stateClone.newPostText = '';
+            return stateClone;
         }
 
         case UPDATE_NEW_TEXT_POST: {
-            state.newPostText = action.newText;
-            return state;
+            let stateClone = {...state};
+            stateClone.newPostText = action.newText;
+            return stateClone;
         }
+
         default:
-            return state
+            return state;
     }
 }
 
