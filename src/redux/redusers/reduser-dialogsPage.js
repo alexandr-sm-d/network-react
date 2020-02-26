@@ -19,30 +19,33 @@ let initialState = {
 const reduserDialogsPage = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE: {
+            let stateClone = {...state};
+            stateClone.messagesData = [...state.messagesData];
 
-            if (state.newMessageText == '') {
-                return state;
+            if (stateClone.newMessageText == '') {
+                return stateClone;
             }
 
             function detectorID() {
-                let num = state.messagesData.length - 1;
-                return state.messagesData[num].id + 1;
+                let num = stateClone.messagesData.length - 1;
+                return stateClone.messagesData[num].id + 1;
             };
 
-            state.messagesData.push(
+            stateClone.messagesData.push(
                 {
                     id: detectorID(),
-                    message: state.newMessageText,
+                    message: stateClone.newMessageText,
                 }
             );
 
-            state.newMessageText = ''
-            return state;
+            stateClone.newMessageText = ''
+            return stateClone;
         }
 
         case UPDATE_NEW_TEXT_MESSAGE: {
-            state.newMessageText = action.newText;
-            return state;
+            let stateClone = {...state};
+            stateClone.newMessageText = action.newText;
+            return stateClone;
         }
 
         default:
