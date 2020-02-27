@@ -1,5 +1,5 @@
-export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE_NEW_TEXT_MESSAGE';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE_NEW_TEXT_MESSAGE';
 
 let initialState = {
     dialogsData: [

@@ -1,5 +1,5 @@
-export const ADD_POST = 'ADD_POST';
-export const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
 
 let initialState = {
     postsData: [
@@ -51,8 +51,8 @@ const reduserProfilePage = (state = initialState, action) => {
     }
 }
 
-export const addNewPost = () => ({ type: ADD_POST });
-export const updateNewPostText = (text) =>
+export const addNewPostAC = () => ({ type: ADD_POST });
+export const updateNewPostTextAC = (text) =>
     ({ type: UPDATE_NEW_TEXT_POST, newText: text });
 
 export default reduserProfilePage;

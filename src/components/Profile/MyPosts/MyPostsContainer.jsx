@@ -1,4 +1,4 @@
-import { addNewPost, updateNewPostText } from '../../../redux/redusers/reduser-profilePage.js'
+import { addNewPostAC, updateNewPostTextAC } from '../../../redux/redusers/reduser-profilePage.js'
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
 
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => dispatch(addNewPost()),
-        updatePostContent: (text) => dispatch(updateNewPostText(text)),
+        addPost: () => dispatch(addNewPostAC()),
+        updatePostContent: (text) => dispatch(updateNewPostTextAC(text)),
     }
 }
 
