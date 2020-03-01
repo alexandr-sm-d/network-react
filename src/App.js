@@ -12,18 +12,25 @@ import UsersContainer from './components/Users/UsersContainer';
 
 function App() {
   return (
-      <div className='app-wrapper'>
+    <div className='wrapper'>
+      <div className='container'>
         <Header />
         <Navigation />
-        <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <Profile />}/>
-          <Route path='/users' render={() => <UsersContainer />}/>
-          <Route path='/dialogs' render={() => <DialogsContainer />} />
-          <Route path='/newsLenta' component={News} />
-          <Route path='/musicList' component={Music} />
-          <Route path='/settingsApp' component={Settings} />
+        <div class="content-container">
+          <main className='content'>
+            <Route path='/profile' render={() => <Profile />} />
+            <Route path='/users' render={() => <UsersContainer />} />
+            <Route path='/dialogs' render={() => <DialogsContainer />} />
+            <Route path='/newsLenta' component={News} />
+            <Route path='/musicList' component={Music} />
+            <Route path='/settingsApp' component={Settings} />
+          </main>
         </div>
+        <footer className='foot'>
+
+        </footer>
       </div>
+    </div>
   );
 }
 
