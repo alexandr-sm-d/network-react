@@ -13,8 +13,26 @@ class Users extends React.Component {
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalCountUsers / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (
             <div>
+                <div className={classesStyle.toggle_page}>
+                    {pages.map((p) => {
+                        return <span className={this.props.currentPage === p && classesStyle.selected}>{p}</span>
+                    })}
+
+                    {/* <span>1</span>
+                    <span>2</span>
+                    <span className={classesStyle.selected}>3</span>
+                    <span>4</span>
+                    <span>5</span> */}
+                </div>
                 <h1>Hi! I'am before componentDidMount</h1>
                 {this.props.users.map((u) => (
                     <div className={classesStyle.user}>

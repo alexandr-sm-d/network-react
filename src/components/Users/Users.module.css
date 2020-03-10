@@ -8,3 +8,12 @@
     width: 200px;
     height: 150px;
 }
+
+.toggle_page {
+    padding-left: 40%;
+    font-size: 26px;
+}
+
+.selected {
+    color: red;
+}
