@@ -6,7 +6,9 @@ import userPhoto from '../../assets/images/us.png'
 class Users extends React.Component {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        axios.get(
+            `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+        )
             .then(resp => {
                 this.props.setUsers(resp.data.items)
             })
@@ -24,14 +26,10 @@ class Users extends React.Component {
             <div>
                 <div className={classesStyle.toggle_page}>
                     {pages.map((p) => {
-                        return <span className={this.props.currentPage === p && classesStyle.selected}>{p}</span>
+                        return <span
+                            className={this.props.currentPage === p && classesStyle.selected}
+                            onClick={() => { this.props.setCurrentPage(p) }}>{p}</span>
                     })}
-
-                    {/* <span>1</span>
-                    <span>2</span>
-                    <span className={classesStyle.selected}>3</span>
-                    <span>4</span>
-                    <span>5</span> */}
                 </div>
                 <h1>Hi! I'am before componentDidMount</h1>
                 {this.props.users.map((u) => (
