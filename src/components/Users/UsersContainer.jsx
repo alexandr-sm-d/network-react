@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
     pageSize: state.usersPage.pageSize,
     totalCountUsers: state.usersPage.totalCountUsers,
     currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching,
 })
 
 const mapDispatchToProps = (dispatch) => ({

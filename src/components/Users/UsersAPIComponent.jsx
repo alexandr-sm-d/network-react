@@ -1,7 +1,9 @@
 import React from 'react';
 import * as axios from 'axios';
 import Users from './Users';
+import preloader from '../../assets/images/preloader.svg'
 
+// UsersAPIComponent - промежуточная контейнерная компонента, которая оборачивает Users.
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
@@ -26,15 +28,18 @@ class UsersAPIComponent extends React.Component {
 
     render() {
         return (
-            <Users
-                totalCountUsers={this.props.totalCountUsers}
-                pageSize={this.props.pageSize}
-                currentPage={this.props.currentPage}
-                onPageChanged={this.onPageChanged}
-                users={this.props.users}
-                follow={this.props.follow}
-                unfollow={this.props.unfollow}
-            />
+            <>
+                {this.props.isFetching ? <img src={preloader}/> : null}
+                <Users
+                    totalCountUsers={this.props.totalCountUsers}
+                    pageSize={this.props.pageSize}
+                    currentPage={this.props.currentPage}
+                    onPageChanged={this.onPageChanged}
+                    users={this.props.users}
+                    follow={this.props.follow}
+                    unfollow={this.props.unfollow}
+                />
+            </>
         )
     }
 }

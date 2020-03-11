@@ -9,6 +9,7 @@ let initialState = {
     pageSize: 10,
     totalCountUsers: 0,
     currentPage: 1,
+    isFetching: true,
 }
 
 const reducerUsersPage = (state = initialState, action) => {
