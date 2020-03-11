@@ -1,27 +1,31 @@
 import React from 'react';
 import * as axios from 'axios';
 import Users from './Users';
-import preloader from '../../assets/images/preloader.svg'
+import Preloader from '../../common/preloader/Preloader';
 
 // UsersAPIComponent - промежуточная контейнерная компонента, которая оборачивает Users.
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
+        this.props.togglePreloader(true);
         axios.get(
             `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
         )
             .then(resp => {
-                this.props.setUsers(resp.data.items)
-                this.props.setTotalCount(resp.data.totalCount)
+                this.props.togglePreloader(false);
+                this.props.setUsers(resp.data.items);
+                this.props.setTotalCount(resp.data.totalCount);
             })
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
+        this.props.togglePreloader(true);
         axios.get(
             `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
         )
             .then(resp => {
+                this.props.togglePreloader(false);
                 this.props.setUsers(resp.data.items);
             })
     }
@@ -29,7 +33,7 @@ class UsersAPIComponent extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <img src={preloader}/> : null}
+                {this.props.isFetching ? <Preloader /> : null}
                 <Users
                     totalCountUsers={this.props.totalCountUsers}
                     pageSize={this.props.pageSize}
@@ -43,5 +47,6 @@ class UsersAPIComponent extends React.Component {
         )
     }
 }
+
 
 export default UsersAPIComponent;

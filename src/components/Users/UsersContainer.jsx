@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
 import { followAC, unfollowAC, 
-    setUsersAC, setCurrentPageAC, totalCountAC } from "../../redux/redusers/reduser-usersPage";
+    setUsersAC, setCurrentPageAC, 
+    totalCountAC, togglePreloaderAC } from "../../redux/redusers/reduser-usersPage";
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     setTotalCount: (amount) => {
         dispatch(totalCountAC(amount))
+    },
+    togglePreloader: (toggleValue) => {
+        dispatch(togglePreloaderAC(toggleValue))
     }
 })
 

@@ -4,13 +4,13 @@ import classesStyle from './Users.module.css';
 
 
 const Users = (props) => {
-    
+
     let pagesCount = Math.ceil(props.totalCountUsers / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-    
+
     return (
         <div>
             <div className={classesStyle.toggle_page}>
@@ -20,7 +20,9 @@ const Users = (props) => {
                         onClick={() => props.onPageChanged(p)}>{p}</span>
                 })}
             </div>
+
             <h1>Hi! I'am before componentDidMount</h1>
+            
             {props.users.map((u) => (
                 <div className={classesStyle.user}>
                     <img src={
