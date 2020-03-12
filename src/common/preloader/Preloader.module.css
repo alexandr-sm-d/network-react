@@ -1,3 +1,6 @@
 .preloader {
- /*  */
+    position: absolute;
+    /* background-color: white; */
+    right: 40%;
+    bottom: 35%;
 }
