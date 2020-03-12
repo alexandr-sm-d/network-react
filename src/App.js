@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route } from 'react-router-dom';
@@ -18,7 +18,7 @@ function App() {
         <Navigation />
         <div class="content-container">
           <main className='content'>
-            <Route path='/profile' render={() => <Profile />} />
+            <Route path='/profile' render={() => <ProfileContainer />} />
             <Route path='/users' render={() => <UsersContainer />} />
             <Route path='/dialogs' render={() => <DialogsContainer />} />
             <Route path='/newsLenta' component={News} />

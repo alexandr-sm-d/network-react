@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
     postsData: [
@@ -7,6 +8,7 @@ let initialState = {
         { id: 2, message: 'its my firsr react project', likeCounts: 10 }
     ],
     newPostText: '',
+    profile: null,
 }
 
 const reduserProfilePage = (state = initialState, action) => {
@@ -39,19 +41,24 @@ const reduserProfilePage = (state = initialState, action) => {
             stateClone.newPostText = '';
             return stateClone;
         }
-
         case UPDATE_NEW_TEXT_POST: {
             let stateClone = {...state};
             stateClone.newPostText = action.newText;
             return stateClone;
         }
-
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile,
+            }
+        }
         default:
             return state;
     }
 }
 
 export const addNewPostAC = () => ({ type: ADD_POST });
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const updateNewPostTextAC = (text) =>
     ({ type: UPDATE_NEW_TEXT_POST, newText: text });
 

@@ -7,3 +7,12 @@
 .description {
     margin: 10px;
 }
+
+.container_ava {
+    /* position: relative; */
+}
+.ava {
+    margin-left: 0px;
+    width: 200px;
+    height: 200px;
+}

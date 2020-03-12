@@ -1,13 +1,22 @@
 import React from 'react';
 import classesStyle from './ProfileInfo.module.css';
+import Preloader from '../../../common/preloader/Preloader';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return (
+            <Preloader />
+        )
+    }
     return (
         <div className={classesStyle.content}>
             {/* <img src='https://getbg.net/upload/full/www.GetBg.net__Team_Chelsea_059529_.jpg' /> */}
             <div className={classesStyle.description}>
                 Main Content
-                <div>
+                <div className={classesStyle.container_ava}>
+                    <div className={classesStyle.ava}>
+                        <img src={props.profile.photos.large} />
+                    </div>
                     Ava + decripption
                 </div>
             </div>
