@@ -14,7 +14,7 @@ class UsersAPIComponent extends React.Component {
             .then(resp => {
                 this.props.togglePreloader(false);
                 this.props.setUsers(resp.data.items);
-                this.props.setTotalCount(resp.data.totalCount);
+                this.props.totalCount(resp.data.totalCount);
             })
     }
 

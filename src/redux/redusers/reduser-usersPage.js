@@ -78,12 +78,13 @@ const reducerUsersPage = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userID) => ({ type: FOLLOW, userID });
-export const unfollowAC = (userID) => ({ type: UNFOLLOW, userID });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const totalCountAC = (count) => ({type: TOTAL_COUNT, count});
-export const togglePreloaderAC = (valueToggle) => ({type: TOGGLE_PRELOADER, valueToggle})
-export const setCurrentPageAC = (numberOfPage) => (
+//action creators:
+export const follow = (userID) => ({ type: FOLLOW, userID });
+export const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const totalCount = (count) => ({type: TOTAL_COUNT, count});
+export const togglePreloader = (valueToggle) => ({type: TOGGLE_PRELOADER, valueToggle})
+export const setCurrentPage = (numberOfPage) => (
     {
         type: SET_CURRENT_PAGE,
         numberOfPage
