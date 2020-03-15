@@ -11,9 +11,11 @@ let mapStateToProps = (state) => ({
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        debugger;
+        // debugger;
         let uID = this.props.match.params.userID;
-
+        if (!uID) {
+            uID = 2;
+        }
         axios.get(
             `https://social-network.samuraijs.com/api/1.0/profile/` + uID
         )
@@ -23,7 +25,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        // debugger;
         return (
             <Profile {...this.props} profile={this.props.profile}/>
         )
