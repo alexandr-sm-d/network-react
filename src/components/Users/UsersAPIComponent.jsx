@@ -9,7 +9,9 @@ class UsersAPIComponent extends React.Component {
     componentDidMount() {
         this.props.togglePreloader(true);
         axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+            `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+                withCredentials: true,
+            }
         )
             .then(resp => {
                 this.props.togglePreloader(false);
@@ -22,7 +24,9 @@ class UsersAPIComponent extends React.Component {
         this.props.setCurrentPage(pageNumber);
         this.props.togglePreloader(true);
         axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
+            `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true,
+            }
         )
             .then(resp => {
                 this.props.togglePreloader(false);
