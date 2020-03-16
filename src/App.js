@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import News from './components/News/News';
@@ -9,12 +8,13 @@ import { Route } from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 function App() {
   return (
     <div className='wrapper'>
       <div className='container'>
-        <Header />
+        <HeaderContainer />
         <Navigation />
         <div class="content-container">
           <main className='content'>
