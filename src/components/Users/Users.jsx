@@ -68,6 +68,19 @@ const Users = (props) => {
                                         props.follow(u.id)
                                     }
                                 })
+                            
+                            // приходит ошибка 405, в header allow: GET,POST,DELETE
+                            // axios.options(
+                            //     `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                            //     withCredentials: true,
+                            //     headers: {
+                            //         "API-KEY": '43cbfaa5-d177-4259-a1a4-a50a7adac83a',
+                            //     }
+                            // }
+                            // )
+                            //     .then(resp => {
+                            //         console.log(resp)
+                            //     })
                         }}>follow</button>}
                 </div>
             ))}
