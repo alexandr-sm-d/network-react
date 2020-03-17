@@ -1,36 +1,40 @@
 import React from 'react';
-import * as axios from 'axios';
 import Users from './Users';
 import Preloader from '../../common/preloader/Preloader';
+import apiDAL from '../../apiDAL/apiDAL';
 
 // UsersAPIComponent - промежуточная контейнерная компонента, которая оборачивает Users.
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
         this.props.togglePreloader(true);
-        axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-                withCredentials: true,
-            }
-        )
-            .then(resp => {
+        // axios.get(
+        //     `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+        //     withCredentials: true,
+        // }
+        // )
+        //     .then(resp => {
+        //         this.props.togglePreloader(false);
+        //         this.props.setUsers(resp.data.items);
+        //         this.props.totalCount(resp.data.totalCount);
+        //     })
+
+        apiDAL.userAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
                 this.props.togglePreloader(false);
-                this.props.setUsers(resp.data.items);
-                this.props.totalCount(resp.data.totalCount);
+                this.props.setUsers(data.items);
+                this.props.totalCount(data.totalCount);
             })
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.togglePreloader(true);
-        axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-                withCredentials: true,
-            }
-        )
-            .then(resp => {
+        apiDAL.userAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 this.props.togglePreloader(false);
-                this.props.setUsers(resp.data.items);
+                this.props.setUsers(data.items);
+                this.props.totalCount(data.totalCount);
             })
     }
 
