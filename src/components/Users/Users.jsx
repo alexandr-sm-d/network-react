@@ -2,7 +2,6 @@ import React from 'react';
 import userPhoto from '../../assets/images/us.png';
 import classesStyle from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
 import apiDAL from '../../apiDAL/apiDAL';
 
 const Users = (props) => {
@@ -39,23 +38,23 @@ const Users = (props) => {
                     <div> {'u.location.contry'} </div>
                     {u.followed
                         ?
-                        <button disabled={props.followingInProgress} onClick={() => {
-                            props.toggleFollowing(true)
+                        <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                            props.toggleFollowing(true, u.id)
                             apiDAL.userAPI.unfollowUser(u.id).then(data => {
                                 if (data.resultCode === 0) {
                                     props.unfollow(u.id)
                                 }
-                                props.toggleFollowing(false)
+                                props.toggleFollowing(false, u.id)
                             })
                         }}>unfollow</button>
                         :
-                        <button disabled={props.followingInProgress} onClick={() => {
-                            props.toggleFollowing(true)
+                        <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                            props.toggleFollowing(true, u.id)
                             apiDAL.userAPI.followUser(u.id).then(data => {
                                 if (data.resultCode === 0) {
                                     props.follow(u.id)
                                 }
-                                props.toggleFollowing(false)
+                                props.toggleFollowing(false, u.id)
                             })
                         }}>follow</button>}
                 </div>

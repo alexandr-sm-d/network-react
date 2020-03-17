@@ -12,7 +12,7 @@ let initialState = {
     totalCountUsers: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: false,
+    followingInProgress: [],
 }
 
 const reducerUsersPage = (state = initialState, action) => {
@@ -79,6 +79,8 @@ const reducerUsersPage = (state = initialState, action) => {
             return {
                 ...state,
                 followingInProgress: action.isFollowing
+                    ? [...state.followingInProgress, action.userID]
+                    : state.followingInProgress.filter(id => id != action.userID)
             }
         }
         default:
@@ -90,9 +92,9 @@ const reducerUsersPage = (state = initialState, action) => {
 export const follow = (userID) => ({ type: FOLLOW, userID });
 export const unfollow = (userID) => ({ type: UNFOLLOW, userID });
 export const setUsers = (users) => ({ type: SET_USERS, users });
-export const totalCount = (count) => ({type: TOTAL_COUNT, count});
-export const togglePreloader = (valueToggle) => ({type: TOGGLE_PRELOADER, valueToggle});
-export const setCurrentPage = (numberOfPage) => ({type: SET_CURRENT_PAGE, numberOfPage});
-export const toggleFollowing = (isFollowing) => ({type: TOGGLE_FOLLOWING, isFollowing});
+export const totalCount = (count) => ({ type: TOTAL_COUNT, count });
+export const togglePreloader = (valueToggle) => ({ type: TOGGLE_PRELOADER, valueToggle });
+export const setCurrentPage = (numberOfPage) => ({ type: SET_CURRENT_PAGE, numberOfPage });
+export const toggleFollowing = (isFollowing, userID) => ({ type: TOGGLE_FOLLOWING, isFollowing, userID });
 
 export default reducerUsersPage;
