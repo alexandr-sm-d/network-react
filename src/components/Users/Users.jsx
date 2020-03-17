@@ -6,7 +6,7 @@ import * as axios from 'axios';
 import apiDAL from '../../apiDAL/apiDAL';
 
 const Users = (props) => {
-
+    // debugger;
     let pagesCount = Math.ceil(props.totalCountUsers / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -39,19 +39,23 @@ const Users = (props) => {
                     <div> {'u.location.contry'} </div>
                     {u.followed
                         ?
-                        <button onClick={() => {
+                        <button disabled={props.followingInProgress} onClick={() => {
+                            props.toggleFollowing(true)
                             apiDAL.userAPI.unfollowUser(u.id).then(data => {
                                 if (data.resultCode === 0) {
                                     props.unfollow(u.id)
                                 }
+                                props.toggleFollowing(false)
                             })
                         }}>unfollow</button>
                         :
-                        <button onClick={() => {
+                        <button disabled={props.followingInProgress} onClick={() => {
+                            props.toggleFollowing(true)
                             apiDAL.userAPI.followUser(u.id).then(data => {
                                 if (data.resultCode === 0) {
                                     props.follow(u.id)
                                 }
+                                props.toggleFollowing(false)
                             })
                         }}>follow</button>}
                 </div>

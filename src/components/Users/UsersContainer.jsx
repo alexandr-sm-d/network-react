@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
 import { follow, unfollow, 
     setUsers, setCurrentPage, 
-    totalCount, togglePreloader } from "../../redux/redusers/reduser-usersPage";
+    totalCount, togglePreloader, toggleFollowing } from "../../redux/redusers/reduser-usersPage";
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
     totalCountUsers: state.usersPage.totalCountUsers,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
 })
 
 // const mapDispatchToProps = (dispatch) => ({
@@ -40,6 +41,7 @@ const UsersContainer = connect(mapStateToProps, {
     setCurrentPage,
     totalCount,
     togglePreloader,
+    toggleFollowing,
 })(UsersAPIComponent)
 
 export default UsersContainer;
