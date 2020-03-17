@@ -21,6 +21,7 @@ class UsersAPIComponent extends React.Component {
 
         apiDAL.userAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(data => {
+                // debugger;
                 this.props.togglePreloader(false);
                 this.props.setUsers(data.items);
                 this.props.totalCount(data.totalCount);

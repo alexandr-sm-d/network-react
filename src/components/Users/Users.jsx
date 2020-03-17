@@ -3,6 +3,7 @@ import userPhoto from '../../assets/images/us.png';
 import classesStyle from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import * as axios from 'axios';
+import apiDAL from '../../apiDAL/apiDAL';
 
 const Users = (props) => {
 
@@ -39,48 +40,19 @@ const Users = (props) => {
                     {u.followed
                         ?
                         <button onClick={() => {
-                            axios.delete(
-                                `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": '43cbfaa5-d177-4259-a1a4-a50a7adac83a',
+                            apiDAL.userAPI.unfollowUser(u.id).then(data => {
+                                if (data.resultCode === 0) {
+                                    props.unfollow(u.id)
                                 }
-                            }
-                            )
-                                .then(resp => {
-                                    if (resp.data.resultCode === 0) {
-                                        props.unfollow(u.id)
-                                    }
-                                })
+                            })
                         }}>unfollow</button>
                         :
                         <button onClick={() => {
-                            axios.post(
-                                `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, null, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": '43cbfaa5-d177-4259-a1a4-a50a7adac83a',
+                            apiDAL.userAPI.followUser(u.id).then(data => {
+                                if (data.resultCode === 0) {
+                                    props.follow(u.id)
                                 }
-                            }
-                            )
-                                .then(resp => {
-                                    if (resp.data.resultCode === 0) {
-                                        props.follow(u.id)
-                                    }
-                                })
-                            
-                            // приходит ошибка 405, в header allow: GET,POST,DELETE
-                            // axios.options(
-                            //     `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                            //     withCredentials: true,
-                            //     headers: {
-                            //         "API-KEY": '43cbfaa5-d177-4259-a1a4-a50a7adac83a',
-                            //     }
-                            // }
-                            // )
-                            //     .then(resp => {
-                            //         console.log(resp)
-                            //     })
+                            })
                         }}>follow</button>}
                 </div>
             ))}
