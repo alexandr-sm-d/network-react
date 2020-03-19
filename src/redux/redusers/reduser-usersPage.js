@@ -102,6 +102,7 @@ export const toggleFollowing = (isFollowing, userID) => ({ type: TOGGLE_FOLLOWIN
 //thunk creators:
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
+        dispatch(setCurrentPage(currentPage))
         dispatch(togglePreloader(true));
         apiDAL.userAPI.getUsers(currentPage, pageSize)
             .then(data => {

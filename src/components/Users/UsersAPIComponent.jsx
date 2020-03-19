@@ -1,25 +1,16 @@
 import React from 'react';
 import Users from './Users';
 import Preloader from '../../common/preloader/Preloader';
-import apiDAL from '../../apiDAL/apiDAL';
-import { getUsers } from '../../redux/redusers/reduser-usersPage';
 
 // UsersAPIComponent - промежуточная контейнерная компонента, которая оборачивает Users.
 class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
-        getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.togglePreloader(true);
-        apiDAL.userAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.togglePreloader(false);
-                this.props.setUsers(data.items);
-                this.props.totalCount(data.totalCount);
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
