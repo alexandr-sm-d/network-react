@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
-import { follow, unfollow, setCurrentPage, 
-    toggleFollowing, getUsers, } from "../../redux/redusers/reduser-usersPage";
+import { follow, unfollow,
+    setCurrentPage, getUsers, } from "../../redux/redusers/reduser-usersPage";
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
@@ -40,7 +40,6 @@ const UsersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
-    toggleFollowing,
     getUsers,
 })(UsersAPIComponent)
 

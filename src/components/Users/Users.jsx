@@ -39,23 +39,11 @@ const Users = (props) => {
                     {u.followed
                         ?
                         <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                            props.toggleFollowing(true, u.id)
-                            apiDAL.userAPI.unfollowUser(u.id).then(data => {
-                                if (data.resultCode === 0) {
-                                    props.unfollow(u.id)
-                                }
-                                props.toggleFollowing(false, u.id)
-                            })
+                            props.unfollow(u.id);
                         }}>unfollow</button>
                         :
                         <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                            props.toggleFollowing(true, u.id)
-                            apiDAL.userAPI.followUser(u.id).then(data => {
-                                if (data.resultCode === 0) {
-                                    props.follow(u.id)
-                                }
-                                props.toggleFollowing(false, u.id)
-                            })
+                            props.follow(u.id);
                         }}>follow</button>}
                 </div>
             ))}

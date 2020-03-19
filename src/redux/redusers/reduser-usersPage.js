@@ -91,8 +91,8 @@ const reducerUsersPage = (state = initialState, action) => {
 }
 
 //action creators:
-export const follow = (userID) => ({ type: FOLLOW, userID });
-export const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+export const followDone = (userID) => ({ type: FOLLOW, userID });
+export const unfollowDone = (userID) => ({ type: UNFOLLOW, userID });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const totalCount = (count) => ({ type: TOTAL_COUNT, count });
 export const togglePreloader = (valueToggle) => ({ type: TOGGLE_PRELOADER, valueToggle });
@@ -110,6 +110,30 @@ export const getUsers = (currentPage, pageSize) => {
                 dispatch(setUsers(data.items));
                 dispatch(totalCount(data.totalCount));
             })
+    }
+}
+
+export const follow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userID))
+        apiDAL.userAPI.followUser(userID).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followDone(userID))
+            }
+            dispatch(toggleFollowing(false, userID))
+        })
+    }
+}
+
+export const unfollow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userID))
+        apiDAL.userAPI.unfollowUser(userID).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowDone(userID))
+            }
+            dispatch(toggleFollowing(false, userID))
+        })
     }
 }
 
