@@ -1,3 +1,5 @@
+import apiDAL from "../../apiDAL/apiDAL";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -59,7 +61,15 @@ const reduserProfilePage = (state = initialState, action) => {
 
 export const addNewPostAC = () => ({ type: ADD_POST });
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const updateNewPostTextAC = (text) =>
-    ({ type: UPDATE_NEW_TEXT_POST, newText: text });
+export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_TEXT_POST, newText: text });
+
+export const getProfile = (uID) => {
+    return (dispatch) => {
+        apiDAL.profileAPI.getProfile(uID)
+            .then(resp => {
+                dispatch(setUserProfile(resp.data));
+            })
+    }
+}
 
 export default reduserProfilePage;

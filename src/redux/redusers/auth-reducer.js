@@ -1,3 +1,5 @@
+import apiDAL from "../../apiDAL/apiDAL";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 const initialState = {
@@ -21,5 +23,19 @@ const reducerAuthUser = (state = initialState, action) => {
     }
 }
 export const setAuthUserDataAC = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse });
+
+export const showAuthTC = () => {
+    return (dispatch) => {
+        apiDAL.authAPI.authSuccess()
+            .then((response) => {
+                // debugger;
+                if (response.data.resultCode === 0) {
+                    alert('авторизован(залгоинин)');
+                    let authData = response.data.data;
+                    dispatch(setAuthUserDataAC(authData));
+                }
+            })
+    }
+}
 
 export default reducerAuthUser;

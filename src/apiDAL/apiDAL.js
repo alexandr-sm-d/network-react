@@ -22,6 +22,16 @@ const apiDAL = {
             return instanceOfAxios.delete(`follow/${id}`)
                 .then((resp) => resp.data)
         },
+    },
+    profileAPI: {
+        getProfile(userID) {
+            return instanceOfAxios.get(`profile/` + userID)
+        }
+    },
+    authAPI: {
+        authSuccess() {
+            return instanceOfAxios.get(`auth/me`)
+        }
     }
 }
 
