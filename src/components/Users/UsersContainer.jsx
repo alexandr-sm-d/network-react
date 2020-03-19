@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
 import { follow, unfollow, 
     setUsers, setCurrentPage, 
-    totalCount, togglePreloader, toggleFollowing } from "../../redux/redusers/reduser-usersPage";
+    totalCount, togglePreloader, toggleFollowing, getUsersTC } from "../../redux/redusers/reduser-usersPage";
 
 const mapStateToProps = (state) => ({
     users: state.usersPage.users,
@@ -31,6 +31,9 @@ const mapStateToProps = (state) => ({
 //     },
 //     togglePreloader: (toggleValue) => {
 //         dispatch(togglePreloaderAC(toggleValue))
+//     }
+//     getUsers: (currentPage, pageSize) => {
+//         dispatch(getUsersTC(currentPage, pageSize))
 //     }
 // })
 

@@ -1,3 +1,5 @@
+import apiDAL from "../../apiDAL/apiDAL";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -96,5 +98,18 @@ export const totalCount = (count) => ({ type: TOTAL_COUNT, count });
 export const togglePreloader = (valueToggle) => ({ type: TOGGLE_PRELOADER, valueToggle });
 export const setCurrentPage = (numberOfPage) => ({ type: SET_CURRENT_PAGE, numberOfPage });
 export const toggleFollowing = (isFollowing, userID) => ({ type: TOGGLE_FOLLOWING, isFollowing, userID });
+
+//thunk creators:
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(togglePreloader(true));
+        apiDAL.userAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(togglePreloader(false));
+                dispatch(setUsers(data.items));
+                dispatch(totalCount(data.totalCount));
+            })
+    }
+}
 
 export default reducerUsersPage;
