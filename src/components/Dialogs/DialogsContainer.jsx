@@ -6,7 +6,6 @@ import withAuthRedirect from '../../hoc/withAuthRedirect.js';
 const mapStateToProps = (state) => {
     return {
         dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth,
     }
 }
 
@@ -16,6 +15,7 @@ const mapDispatchToProps = (dispatch) => {
         updateMessageBody: (text) => dispatch(updateMessageText(text)),
     }
 }
+
 const DialogsContainerRedirect = withAuthRedirect(Dialogs)
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsContainerRedirect)
 

@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import { getProfile } from '../../redux/redusers/reduser-profilePage';
 import { withRouter, Redirect } from 'react-router-dom';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-// import apiDAL from '../../apiDAL/apiDAL';
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
 })
 
 class ProfileContainer extends React.Component {
@@ -29,6 +27,7 @@ class ProfileContainer extends React.Component {
     }
 
 }
+
 const ProfileContainerRedirect = withAuthRedirect(ProfileContainer)
 const WithRouterProfileContainer = withRouter(ProfileContainerRedirect)
 

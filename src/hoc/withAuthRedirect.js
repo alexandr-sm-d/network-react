@@ -1,5 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+let mapStateToPropsForRedirect = (state) => ({
+    isAuth: state.auth.isAuth,
+})
 
 const withAuthRedirect = (Component) => {
     const ComponentContainer = (props) => {
@@ -7,7 +12,7 @@ const withAuthRedirect = (Component) => {
         return <Component {...props} />
     }
 
-    return ComponentContainer;
+    return connect(mapStateToPropsForRedirect)(ComponentContainer);
 }
 
 export default withAuthRedirect;
