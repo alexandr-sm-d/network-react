@@ -2,6 +2,7 @@ import React from 'react';
 import classesStyle from './Dialogs.module.css'
 import DialogItem from './DialogsItem/DialogsItem';
 import MessageItem from './MessageItem/MessageItem';
+import { Redirect } from 'react-router-dom';
 
 const Dialogs = (props) => {
 
@@ -20,6 +21,8 @@ const Dialogs = (props) => {
         props.updateMessageBody(text)
     }
 
+    if (!props.isAuth) return <Redirect to='/login' />
+
     return (
         <div className={classesStyle.dialogsWrapper}>
             <div className={classesStyle.dialogUsers}>
@@ -31,7 +34,7 @@ const Dialogs = (props) => {
                     ref={newMessageElement}
                     placeholder='Enter your message'
                     onChange={changeValueMessageText}
-                    value ={newText}
+                    value={newText}
                 />
                 <div>
                     <button onClick={sendMessage}>Send Message</button>

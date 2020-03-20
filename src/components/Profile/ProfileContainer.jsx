@@ -2,11 +2,12 @@ import React from 'react';
 import Profile from './Profile';
 import { connect } from "react-redux";
 import { getProfile } from '../../redux/redusers/reduser-profilePage';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 // import apiDAL from '../../apiDAL/apiDAL';
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth,
 })
 
 class ProfileContainer extends React.Component {
@@ -21,6 +22,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.isAuth) return <Redirect to='/login' />
         return (
             <Profile {...this.props} profile={this.props.profile}/>
         )

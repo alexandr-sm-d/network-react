@@ -9,6 +9,7 @@ import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/newsLenta' component={News} />
             <Route path='/musicList' component={Music} />
             <Route path='/settingsApp' component={Settings} />
+            <Route path='/login' component={Login} />
           </main>
         </div>
         <footer className='foot'>
