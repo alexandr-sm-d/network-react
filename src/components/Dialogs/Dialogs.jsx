@@ -21,8 +21,6 @@ const Dialogs = (props) => {
         props.updateMessageBody(text)
     }
 
-    if (!props.isAuth) return <Redirect to='/login' />
-
     return (
         <div className={classesStyle.dialogsWrapper}>
             <div className={classesStyle.dialogUsers}>
@@ -34,7 +32,7 @@ const Dialogs = (props) => {
                     ref={newMessageElement}
                     placeholder='Enter your message'
                     onChange={changeValueMessageText}
-                    value={newText}
+                    value ={newText}
                 />
                 <div>
                     <button onClick={sendMessage}>Send Message</button>

@@ -1,6 +1,7 @@
 import { sendNewMessage, updateMessageText } from '../../redux/redusers/reduser-dialogsPage.js'
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect.js';
 
 const mapStateToProps = (state) => {
     return {
@@ -15,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
         updateMessageBody: (text) => dispatch(updateMessageText(text)),
     }
 }
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+const DialogsContainerRedirect = withAuthRedirect(Dialogs)
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsContainerRedirect)
 
 export default DialogsContainer;
