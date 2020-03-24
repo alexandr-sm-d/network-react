@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
                     </div>
                     Ava + decripption
                 </div>
-                <ProfileStatus status={'Hello there!'}/>
+                <ProfileStatus status={props.status}/>
             </div>
         </div>
     )

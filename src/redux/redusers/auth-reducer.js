@@ -30,7 +30,7 @@ export const showAuthTC = () => {
             .then((response) => {
                 // debugger;
                 if (response.data.resultCode === 0) {
-                    alert('авторизован(залгоинин)');
+                    // alert('авторизован(залгоинин)');
                     let authData = response.data.data;
                     dispatch(setAuthUserDataAC(authData));
                 }

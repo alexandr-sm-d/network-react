@@ -26,6 +26,9 @@ const apiDAL = {
     profileAPI: {
         getProfile(userID) {
             return instanceOfAxios.get(`profile/` + userID)
+        },
+        getProfileStatus(userID) {
+            return instanceOfAxios.get(`profile/status/` + userID)
         }
     },
     authAPI: {

@@ -2,7 +2,8 @@ import apiDAL from "../../apiDAL/apiDAL";
 
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS'
 
 let initialState = {
     postsData: [
@@ -11,12 +12,13 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
+    status: 'wait server response...'
 }
 
 const reduserProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let stateClone = {...state};
+            let stateClone = { ...state };
             stateClone.postsData = [...state.postsData];
 
             if (stateClone.newPostText == '') {
@@ -44,7 +46,7 @@ const reduserProfilePage = (state = initialState, action) => {
             return stateClone;
         }
         case UPDATE_NEW_TEXT_POST: {
-            let stateClone = {...state};
+            let stateClone = { ...state };
             stateClone.newPostText = action.newText;
             return stateClone;
         }
@@ -54,13 +56,20 @@ const reduserProfilePage = (state = initialState, action) => {
                 profile: action.profile,
             }
         }
+        case SET_PROFILE_STATUS: {
+            return {
+                ...state,
+                status: action.status
+            }
+        }
         default:
             return state;
     }
 }
 
 export const addNewPostAC = () => ({ type: ADD_POST });
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setProfileStatus = (status) => ({type: SET_PROFILE_STATUS, status});
 export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_TEXT_POST, newText: text });
 
 export const getProfile = (uID) => {
@@ -68,6 +77,15 @@ export const getProfile = (uID) => {
         apiDAL.profileAPI.getProfile(uID)
             .then(resp => {
                 dispatch(setUserProfile(resp.data));
+            })
+    }
+}
+
+export const getProfileStatus = (userID) => {
+    return (dispatch) => {
+        apiDAL.profileAPI.getProfileStatus(userID)
+            .then(resp => {
+                dispatch(setProfileStatus(resp.data))
             })
     }
 }
