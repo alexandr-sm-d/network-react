@@ -3,7 +3,7 @@ import apiDAL from "../../apiDAL/apiDAL";
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_PROFILE_STATUS = 'SET_PROFILE_STATUS'
+const SET_USER_STATUS = 'SET_USER_STATUS'
 
 let initialState = {
     postsData: [
@@ -56,7 +56,7 @@ const reduserProfilePage = (state = initialState, action) => {
                 profile: action.profile,
             }
         }
-        case SET_PROFILE_STATUS: {
+        case SET_USER_STATUS: {
             return {
                 ...state,
                 status: action.status
@@ -69,7 +69,7 @@ const reduserProfilePage = (state = initialState, action) => {
 
 export const addNewPostAC = () => ({ type: ADD_POST });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-export const setProfileStatus = (status) => ({type: SET_PROFILE_STATUS, status});
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
 export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_TEXT_POST, newText: text });
 
 export const getProfile = (uID) => {
@@ -81,11 +81,21 @@ export const getProfile = (uID) => {
     }
 }
 
-export const getProfileStatus = (userID) => {
+export const getUserStatus = (userID) => {
     return (dispatch) => {
-        apiDAL.profileAPI.getProfileStatus(userID)
+        apiDAL.profileAPI.getUserStatus(userID)
             .then(resp => {
-                dispatch(setProfileStatus(resp.data))
+                dispatch(setUserStatus(resp.data))
+            })
+    }
+}
+
+export const updateUserStatus = (status) => {
+    return (dispatch) => {
+        apiDAL.profileAPI.updateStatus(status)
+            .then(resp => {
+                if (resp.data.resultCode === 0)
+                dispatch(setUserStatus(status))
             })
     }
 }

@@ -3,6 +3,7 @@ import React from 'react';
 class ProfileStatus extends React.Component {
     state = {
         editMode: false,
+        status: 'local state status',
     }
 
     componentWillMount() {
@@ -15,11 +16,11 @@ class ProfileStatus extends React.Component {
     }
 
     deactivateEditMode() {
-        this.setState({ editMode: false })
+        this.setState({ editMode: false });
+        this.props.updateUserStatus(this.state.status);
     }
 
     render() {
-        // console.log(this.props);
         return (
             <div>
                 <div>

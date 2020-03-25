@@ -27,8 +27,11 @@ const apiDAL = {
         getProfile(userID) {
             return instanceOfAxios.get(`profile/` + userID)
         },
-        getProfileStatus(userID) {
+        getUserStatus(userID) {
             return instanceOfAxios.get(`profile/status/` + userID)
+        },
+        updateStatus(status) {
+            return instanceOfAxios.put(`profile/status/`, {status})
         }
     },
     authAPI: {
