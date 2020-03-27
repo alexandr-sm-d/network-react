@@ -1,4 +1,4 @@
-import { sendNewMessage, updateMessageText } from '../../redux/redusers/reduser-dialogsPage.js'
+import { sendNewMessage } from '../../redux/redusers/reduser-dialogsPage.js'
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 import withAuthRedirect from '../../hoc/withAuthRedirect.js';
@@ -12,8 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendNewMessage: () => dispatch(sendNewMessage()),
-        updateMessageBody: (text) => dispatch(updateMessageText(text)),
+        sendNewMessage: (v) => dispatch(sendNewMessage(v)),
     }
 }
 

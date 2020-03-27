@@ -13,7 +13,7 @@ let initialState = {
         { id: 2, message: 'How are you' },
         { id: 3, message: 'How old are you' },
     ],
-    newMessageText: '',
+    // newMessageText: '',
 }
 
 const reduserDialogsPage = (state = initialState, action) => {
@@ -34,26 +34,19 @@ const reduserDialogsPage = (state = initialState, action) => {
             stateClone.messagesData.push(
                 {
                     id: detectorID(),
-                    message: stateClone.newMessageText,
+                    message: action.newMessage,
                 }
             );
 
-            stateClone.newMessageText = ''
+            // stateClone.newMessageText = ''
             return stateClone;
         }
-
-        case UPDATE_NEW_TEXT_MESSAGE: {
-            let stateClone = {...state};
-            stateClone.newMessageText = action.newText;
-            return stateClone;
-        }
-
         default:
             return state;
     }
 }
 
-export const sendNewMessage = () => ({ type: SEND_MESSAGE });
+export const sendNewMessage = (newMessage) => ({ type: SEND_MESSAGE, newMessage});
 export const updateMessageText = (text) =>
     ({ type: UPDATE_NEW_TEXT_MESSAGE, newText: text })
 
