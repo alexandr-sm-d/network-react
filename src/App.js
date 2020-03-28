@@ -17,7 +17,7 @@ function App() {
       <div className='container'>
         <HeaderContainer />
         <Navigation />
-        <div class="content-container">
+        <div className="content-container">
           <main className='content'>
             <Route path='/profile/:userID?' render={() => <ProfileContainer />} />
             <Route path='/users' render={() => <UsersContainer />} />

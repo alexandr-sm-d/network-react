@@ -1,7 +1,6 @@
 import apiDAL from "../../apiDAL/apiDAL";
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_TEXT_POST = 'UPDATE_NEW_TEXT_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -10,7 +9,6 @@ let initialState = {
         { id: 1, message: 'hi everyone!', likeCounts: 12 },
         { id: 2, message: 'its my firsr react project', likeCounts: 10 }
     ],
-    newPostText: '',
     profile: null,
     status: 'wait server response...'
 }
@@ -37,17 +35,11 @@ const reduserProfilePage = (state = initialState, action) => {
             stateClone.postsData.push(
                 {
                     id: detectorID(),
-                    message: stateClone.newPostText,
+                    message: action.postBody,
                     likeCounts: randomCountLikes(),
                 }
             );
 
-            stateClone.newPostText = '';
-            return stateClone;
-        }
-        case UPDATE_NEW_TEXT_POST: {
-            let stateClone = { ...state };
-            stateClone.newPostText = action.newText;
             return stateClone;
         }
         case SET_USER_PROFILE: {
@@ -67,10 +59,9 @@ const reduserProfilePage = (state = initialState, action) => {
     }
 }
 
-export const addNewPostAC = () => ({ type: ADD_POST });
+export const addNewPostAC = (postBody) => ({ type: ADD_POST, postBody});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
-export const updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_TEXT_POST, newText: text });
 
 export const getProfile = (uID) => {
     return (dispatch) => {

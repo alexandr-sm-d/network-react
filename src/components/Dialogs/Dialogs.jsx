@@ -20,7 +20,10 @@ const Dialogs = (props) => {
             <div className={classesStyle.dialogUsers}>
                 {dialogs}
             </div>
-            <DialogsFormRedux messages={messages} onSubmit={sendMessage}/>
+            <div className={classesStyle.dialogMessages}>
+                {messages}
+                <DialogsFormRedux onSubmit={sendMessage} />
+            </div>
         </div>
     )
 }
@@ -28,9 +31,7 @@ const Dialogs = (props) => {
 const DialogsForm = (props) => {
 
     return (
-        <form className={classesStyle.dialogMessages}
-            onSubmit={props.handleSubmit}>
-            {props.messages}
+        <form onSubmit={props.handleSubmit}>
             <Field name="messageForSubmit"
                 component="textarea"
                 placeholder='Enter your message' />
