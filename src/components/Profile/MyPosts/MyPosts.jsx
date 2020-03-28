@@ -3,6 +3,7 @@ import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
 import { reduxForm, Field } from 'redux-form';
 import { validatorEmptyPost, validatorMaxLength } from '../../../utlis/validators/validatorsProfile';
+import { Textarea } from '../../../common/FormsControls/FormsControls';
 
 const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
@@ -17,7 +18,7 @@ const MyPosts = (props) => {
     return (
         <div className={classesStyle.myPost}>
             <h2>My posts</h2>
-            <MyPostsForm onSubmit={addPost}/>
+            <MyPostsForm onSubmit={addPost} />
             <div className={classesStyle.posts}>
                 {posts}
             </div>
@@ -30,9 +31,9 @@ let MyPostsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
+                    component={Textarea}
                     name="postForSubmit"
                     placeholder="Enter your post"
-                    component="textarea"
                     validate={[validatorEmptyPost, maxLength10]}
                 />
             </div>
@@ -43,6 +44,6 @@ let MyPostsForm = (props) => {
     )
 }
 
-MyPostsForm = reduxForm({form: 'profileAddPost'})(MyPostsForm)
+MyPostsForm = reduxForm({ form: 'profileAddPost' })(MyPostsForm)
 
 export default MyPosts;
