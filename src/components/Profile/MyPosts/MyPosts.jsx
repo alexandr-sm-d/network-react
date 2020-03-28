@@ -2,7 +2,9 @@ import React from 'react';
 import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
 import { reduxForm, Field } from 'redux-form';
+import { validatorEmptyPost, validatorMaxLength } from '../../../utlis/validators/validatorsProfile';
 
+const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
 
     function addPost(formData) {
@@ -30,8 +32,8 @@ let MyPostsForm = (props) => {
                 <Field
                     name="postForSubmit"
                     placeholder="Enter your post"
-                    value={props.newPostText}
                     component="textarea"
+                    validate={[validatorEmptyPost, maxLength10]}
                 />
             </div>
             <div>
