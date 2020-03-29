@@ -1,15 +1,33 @@
 import React from 'react'
 import classesStyle from './FormsControls.module.css'
 
-export const Textarea = ({ input, meta, ...props }) => {
-    // debugger
+const FormControl = ({ input, meta, ...props }) => {
     const hasError = meta.touched && meta.error;
     return (
         <div className={`${classesStyle.form} ${hasError ? classesStyle.error : ''}`}>
             <div>
-                <textarea className={classesStyle.textarea} {...input} {...props} />
+                {props.children}
             </div>
             {hasError && <span>{meta.error}</span>}
         </div>
     )
 }
+
+export const Textarea = (props) => {
+    const {input, ...restProps} = props    
+    return (
+        <FormControl {...props}>
+            <textarea className={classesStyle.textarea} {...input} {...restProps}/>
+        </FormControl>
+    )
+}
+
+export const Input = (props) => {
+    const {input, ...restProps} = props    
+    return (
+        <FormControl {...props}>
+            <input className={classesStyle.textarea} {...input} {...restProps}/>
+        </FormControl>
+    )
+}
+
