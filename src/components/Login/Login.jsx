@@ -36,7 +36,7 @@ const LoginForm = (props) => {
                     placeholder="Enter your password"
                     component={Input}
                     validate={[validatorEmptyPost]}
-                    type="password"
+                    // type="password"
                     name={"password"} />
             </div>
             <div>
@@ -46,7 +46,6 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <button>Log in</button>
-                <button>Log out</button>
             </div>
         </form>
     )

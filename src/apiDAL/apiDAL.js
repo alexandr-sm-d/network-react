@@ -44,6 +44,9 @@ const apiDAL = {
                 ...payload,
                 rememberMe: payload.rememberMe || false
             })
+        },
+        logout() {
+            return instanceOfAxios.delete('auth/login')
         }
     }
 }

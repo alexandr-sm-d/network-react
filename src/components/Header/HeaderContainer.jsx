@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from './Header';
-import { setAuthUserDataAC, showAuthTC } from '../../redux/redusers/auth-reducer';
+import { setAuthUserDataAC, showAuthTC, logout } from '../../redux/redusers/auth-reducer';
 import { connect } from 'react-redux';
-import apiDAL from '../../apiDAL/apiDAL';
 
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-    //    this.props.showAuth()
+       this.props.showAuth()
     }
 
     render() {
@@ -28,6 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
     },
     showAuth: () => {
         dispatch(showAuthTC())
+    },
+    logout: () => {
+        alert(1)
+        dispatch(logout())
     }
 })
 

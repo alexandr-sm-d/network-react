@@ -11,5 +11,8 @@
     right: 30px;
     top: 10px;
     float: right;
+}
+
+.authLogin span {
     background-color: wheat;
 }
