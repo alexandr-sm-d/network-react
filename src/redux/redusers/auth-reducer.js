@@ -38,4 +38,10 @@ export const showAuthTC = () => {
     }
 }
 
+export const login = (data) => { // loginTC
+    return (dispatch) => {
+        console.log(data)
+    }
+}
+
 export default reducerAuthUser;
