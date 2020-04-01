@@ -44,6 +44,9 @@ export const login = (data) => { // loginTC
         apiDAL.authAPI.login(data)
             .then((response) => {
                 console.log(response)
+                if (response.data.resultCode === 0) {
+                    dispatch(showAuthTC())
+                }
             })
     }
 }
