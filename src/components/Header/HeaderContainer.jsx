@@ -7,7 +7,7 @@ import apiDAL from '../../apiDAL/apiDAL';
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-       this.props.showAuth()
+    //    this.props.showAuth()
     }
 
     render() {

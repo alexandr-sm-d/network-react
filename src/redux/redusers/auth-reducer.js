@@ -15,14 +15,16 @@ const reducerAuthUser = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.dataFromResponse,
-                isAuth: true,
             }
         }
         default:
             return state
     }
 }
-export const setAuthUserDataAC = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse });
+export const setAuthUserDataAC = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse: {
+    ...dataFromResponse,
+    isAuth: true
+} });
 
 export const showAuthTC = () => {
     return (dispatch) => {
@@ -46,6 +48,8 @@ export const login = (data) => { // loginTC
                 console.log(response)
                 if (response.data.resultCode === 0) {
                     dispatch(showAuthTC())
+                } else {
+                    alert(`you don't registred!`)
                 }
             })
     }

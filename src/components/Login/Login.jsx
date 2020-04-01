@@ -4,11 +4,14 @@ import { Input } from '../../common/FormsControls/FormsControls';
 import { validatorEmptyPost } from '../../utlis/validators/validatorsProfile';
 import { login } from '../../redux/redusers/auth-reducer';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const login = (formData) => {
         props.login(formData)
     }    
+
+    if (props.isAuth) return <Redirect to="/profile" />
 
     return (
         <div>
@@ -43,6 +46,7 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <button>Log in</button>
+                <button>Log out</button>
             </div>
         </form>
     )
@@ -52,4 +56,8 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
-export default connect(null, {login})(Login);
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {login})(Login);
