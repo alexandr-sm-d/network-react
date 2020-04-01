@@ -41,6 +41,10 @@ export const showAuthTC = () => {
 export const login = (data) => { // loginTC
     return (dispatch) => {
         console.log(data)
+        apiDAL.authAPI.login(data)
+            .then((response) => {
+                console.log(response)
+            })
     }
 }
 

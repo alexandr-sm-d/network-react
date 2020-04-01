@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import { login } from '../redux/redusers/auth-reducer';
 
 const instanceOfAxios = axios.create({
     withCredentials: true,
@@ -37,6 +38,12 @@ const apiDAL = {
     authAPI: {
         authSuccess() {
             return instanceOfAxios.get(`auth/me`)
+        },
+        login(payload) {
+            return instanceOfAxios.post('auth/login', {
+                ...payload,
+                rememberMe: payload.rememberMe || false
+            })
         }
     }
 }
