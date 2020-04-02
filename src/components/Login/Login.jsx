@@ -5,18 +5,19 @@ import { validatorEmptyPost } from '../../utlis/validators/validatorsProfile';
 import { login } from '../../redux/redusers/auth-reducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import classesStyle from './Login.module.css';
 
 const Login = (props) => {
     const login = (formData) => {
         props.login(formData)
-    }    
+    }
 
     if (props.isAuth) return <Redirect to="/profile" />
 
     return (
         <div>
             <h3>You need to login in this app!</h3>
-            <LoginReduxForm onSubmit={login}/>
+            <LoginReduxForm onSubmit={login} />
         </div>
     )
 }
@@ -36,7 +37,7 @@ const LoginForm = (props) => {
                     placeholder="Enter your password"
                     component={Input}
                     validate={[validatorEmptyPost]}
-                    // type="password"
+                    type="password"
                     name={"password"} />
             </div>
             <div>
@@ -44,6 +45,9 @@ const LoginForm = (props) => {
                     component={Input}
                     name={"rememberMe"} />remember me
             </div>
+            {props.error && <div className={classesStyle.commonError}>
+                {props.error}
+            </div>}
             <div>
                 <button>Log in</button>
             </div>
@@ -59,4 +63,4 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, { login })(Login);

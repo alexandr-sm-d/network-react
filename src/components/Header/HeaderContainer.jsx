@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(showAuthTC())
     },
     logout: () => {
-        alert(1)
         dispatch(logout())
     }
 })

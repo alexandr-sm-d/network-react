@@ -1,4 +1,5 @@
 import apiDAL from "../../apiDAL/apiDAL";
+import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const DELETE_USER_DATA = 'DELETE_USER_DATA';
@@ -28,10 +29,12 @@ const reducerAuthUser = (state = initialState, action) => {
             return state
     }
 }
-export const setAuthUserDataAC = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse: {
-    ...dataFromResponse,
-    isAuth: true
-} });
+export const setAuthUserDataAC = (dataFromResponse) => ({
+    type: SET_USER_DATA, dataFromResponse: {
+        ...dataFromResponse,
+        isAuth: true
+    }
+});
 
 export const deleteAuthUserData = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse });
 
@@ -55,7 +58,13 @@ export const login = (data) => { // loginTC
                 if (response.data.resultCode === 0) {
                     dispatch(showAuthTC())
                 } else {
-                    alert(`you don't registred!`)
+                    // debugger
+                    const message = response.data.messages.length
+                        ? response.data.messages[0]
+                        : 'some error'
+                    dispatch(stopSubmit('login', {
+                        _error: message,
+                    }))
                 }
             })
     }
@@ -66,7 +75,6 @@ export const logout = () => { // loginTC
         apiDAL.authAPI.logout()
             .then((response) => {
                 if (response.data.resultCode === 0) {
-                    alert(2)
                     dispatch(deleteAuthUserData(initialState))
                 }
             })
