@@ -2,6 +2,7 @@ import React from 'react';
 import classesStyle from './ProfileInfo.module.css';
 import Preloader from '../../../common/preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
+import userPhoto from '../../../assets/images/us.png';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -16,7 +17,7 @@ const ProfileInfo = (props) => {
                 Main Content
                 <div className={classesStyle.container_ava}>
                     <div className={classesStyle.ava}>
-                        <img src={props.profile.photos.large} />
+                        <img src={props.profile.photos.large || userPhoto} />
                     </div>
                     Ava + decripption
                 </div>

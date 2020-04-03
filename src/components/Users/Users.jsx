@@ -2,7 +2,6 @@ import React from 'react';
 import userPhoto from '../../assets/images/us.png';
 import classesStyle from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import apiDAL from '../../apiDAL/apiDAL';
 
 const Users = (props) => {
     // debugger;
