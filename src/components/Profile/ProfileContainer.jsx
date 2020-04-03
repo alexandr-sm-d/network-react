@@ -20,6 +20,9 @@ class ProfileContainer extends React.Component {
         let uID = this.props.match.params.userID;
         if (!uID) {
             uID = this.props.authorizedUserID;
+            if (!uID) {
+                this.props.history.push('/login')
+            }
         }
         this.props.getProfile(uID);
         setTimeout(()=> {this.props.getUserStatus(uID)}, 2000)
