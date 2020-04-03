@@ -13,16 +13,24 @@ import Login from './components/Login/Login';
 import { getAuthUserDataTC } from './redux/reducers/auth-reducer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { initializedSuccessAC } from './redux/reducers/app-reducer';
+import { intitializingTC } from './redux/reducers/app-reducer';
+import Preloader from './common/preloader/Preloader';
 
 class App extends React.Component {
     componentDidMount() {
-        console.log('before')
-        this.props.initializedSuccess()
-        console.log('after')
+        this.props.intitializing()
     }
 
     render() {
+
+        {
+            if (!this.props.appIsReady) {
+                return (
+                    <Preloader />
+                )
+            }
+        }
+
         return (
             <div className='wrapper'>
                 <div className='container'>
@@ -48,15 +56,19 @@ class App extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    appIsReady: state.app.appIsReady,
+})
+
 const mapDispatchToProps = (dispatch) => ({
     getAuthUserData: () => {
         dispatch(getAuthUserDataTC())
     },
-    initializedSuccess: () => {
-        dispatch(initializedSuccessAC())
-    },    
+    intitializing: () => {
+        dispatch(intitializingTC())
+    },
 })
 
 export default compose(
     withRouter,
-    connect(null, mapDispatchToProps))(App)
+    connect(mapStateToProps, mapDispatchToProps))(App)

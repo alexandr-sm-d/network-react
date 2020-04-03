@@ -40,7 +40,7 @@ export const deleteAuthUserData = (dataFromResponse) => ({ type: SET_USER_DATA, 
 
 export const getAuthUserDataTC = () => {
     return (dispatch) => {
-        apiDAL.authAPI.authSuccess()
+        return apiDAL.authAPI.authSuccess()
             .then((response) => {
                 // debugger;
                 if (response.data.resultCode === 0) {
@@ -48,6 +48,7 @@ export const getAuthUserDataTC = () => {
                     dispatch(setAuthUserDataAC(authData));
                 }
             })
+        // return 'alex'
     }
 }
 
