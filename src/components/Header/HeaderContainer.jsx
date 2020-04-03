@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import { setAuthUserDataAC, getAuthUserDataTC, logout } from '../../redux/redusers/auth-reducer';
+import { setAuthUserDataAC, getAuthUserDataTC, logout } from '../../redux/reducers/auth-reducer';
 import { connect } from 'react-redux';
 
 class HeaderContainer extends React.Component {
@@ -19,9 +19,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     setAuthUserData: (value) => {
         dispatch(setAuthUserDataAC(value))
-    },
-    getAuthUserData: () => {
-        dispatch(getAuthUserDataTC())
     },
     logout: () => {
         dispatch(logout())

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { Input } from '../../common/FormsControls/FormsControls';
 import { validatorEmptyPost } from '../../utlis/validators/validatorsProfile';
-import { login } from '../../redux/redusers/auth-reducer';
+import { login } from '../../redux/reducers/auth-reducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import classesStyle from './Login.module.css';

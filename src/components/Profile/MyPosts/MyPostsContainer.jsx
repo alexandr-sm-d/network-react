@@ -1,4 +1,4 @@
-import { addNewPostAC, updateNewPostTextAC } from '../../../redux/redusers/reduser-profilePage.js'
+import { addNewPostAC, updateNewPostTextAC } from '../../../redux/reducers/profilePage-reducer.js'
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
 

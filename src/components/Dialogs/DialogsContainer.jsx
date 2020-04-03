@@ -1,4 +1,4 @@
-import { sendNewMessage } from '../../redux/redusers/reduser-dialogsPage.js'
+import { sendNewMessage } from '../../redux/reducers/dialogsPage-reducer.js'
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 import withAuthRedirect from '../../hoc/withAuthRedirect.js';

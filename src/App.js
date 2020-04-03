@@ -10,13 +10,16 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import { getAuthUserDataTC } from './redux/redusers/auth-reducer';
+import { getAuthUserDataTC } from './redux/reducers/auth-reducer';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { initializedSuccessAC } from './redux/reducers/app-reducer';
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.getAuthUserData()
+        console.log('before')
+        this.props.initializedSuccess()
+        console.log('after')
     }
 
     render() {
@@ -48,6 +51,9 @@ class App extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
     getAuthUserData: () => {
         dispatch(getAuthUserDataTC())
+    },
+    initializedSuccess: () => {
+        dispatch(initializedSuccessAC())
     },    
 })
 
