@@ -38,7 +38,7 @@ export const setAuthUserDataAC = (dataFromResponse) => ({
 
 export const deleteAuthUserData = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse });
 
-export const showAuthTC = () => {
+export const getAuthUserDataTC = () => {
     return (dispatch) => {
         apiDAL.authAPI.authSuccess()
             .then((response) => {
@@ -56,7 +56,7 @@ export const login = (data) => { // loginTC
         apiDAL.authAPI.login(data)
             .then((response) => {
                 if (response.data.resultCode === 0) {
-                    dispatch(showAuthTC())
+                    dispatch(getAuthUserDataTC())
                 } else {
                     // debugger
                     const message = response.data.messages.length
