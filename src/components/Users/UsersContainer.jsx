@@ -1,46 +1,32 @@
 import { connect } from "react-redux";
 import UsersAPIComponent from "./UsersAPIComponent";
 import { follow, unfollow,
-    setCurrentPage, getUsers, } from "../../redux/reducers/usersPage-reducer";
+    setCurrentPage, requestUsers, } from "../../redux/reducers/usersPage-reducer";
+import { getUsers, getPageSize, getTotalCountUsers, getCurrentPage, getIsFetching, getFollowingInProgress } from "../../redux/reducers/usersPage-selectors";
+
+// const mapStateToProps = (state) => ({
+//     users: state.usersPage.users,
+//     pageSize: state.usersPage.pageSize,
+//     totalCountUsers: state.usersPage.totalCountUsers,
+//     currentPage: state.usersPage.currentPage,
+//     isFetching: state.usersPage.isFetching,
+//     followingInProgress: state.usersPage.followingInProgress,
+// })
 
 const mapStateToProps = (state) => ({
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalCountUsers: state.usersPage.totalCountUsers,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress,
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalCountUsers: getTotalCountUsers(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
 })
-
-// const mapDispatchToProps = (dispatch) => ({
-//     follow: (userID) => {
-//         dispatch(followAC(userID))
-//     },
-//     unfollow: (userID) => {
-//         dispatch(unfollowAC(userID))
-//     },
-//     setUsers: (users) => {
-//         dispatch(setUsersAC(users))
-//     },
-//     setCurrentPage: (value) => {
-//         dispatch(setCurrentPageAC(value))
-//     },
-//     setTotalCount: (amount) => {
-//         dispatch(totalCountAC(amount))
-//     },
-//     togglePreloader: (toggleValue) => {
-//         dispatch(togglePreloaderAC(toggleValue))
-//     }
-//     getUsers: (currentPage, pageSize) => {
-//         dispatch(getUsersTC(currentPage, pageSize))
-//     }
-// })
 
 const UsersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
-    getUsers,
+    requestUsers,
 })(UsersAPIComponent)
 
 export default UsersContainer;

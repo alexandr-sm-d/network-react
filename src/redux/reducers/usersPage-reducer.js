@@ -100,7 +100,7 @@ export const setCurrentPage = (numberOfPage) => ({ type: SET_CURRENT_PAGE, numbe
 export const toggleFollowing = (isFollowing, userID) => ({ type: TOGGLE_FOLLOWING, isFollowing, userID });
 
 //thunk creators:
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setCurrentPage(currentPage))
         dispatch(togglePreloader(true));
