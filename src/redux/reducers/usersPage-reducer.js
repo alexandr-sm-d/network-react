@@ -15,10 +15,17 @@ let initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: [],
+    fake: 10,
 }
 
 const reducerUsersPage = (state = initialState, action) => {
     switch (action.type) {
+        case 'FAKE': {
+            return {
+                ...state,
+                fake: state.fake + 1,
+            }
+        }
         case FOLLOW: {
             //нужно вернуть новый state, его копию, чтобы корректно отрабатывала connect()()
             return {
