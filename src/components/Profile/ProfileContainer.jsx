@@ -3,9 +3,7 @@ import Profile from './Profile';
 import { connect } from "react-redux";
 import { getProfile, getUserStatus, updateUserStatus } from '../../redux/reducers/profilePage-reducer';
 import { withRouter, Redirect } from 'react-router-dom';
-// import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 let mapStateToProps = (state) => {
     console.log('mstp profile');
@@ -44,7 +42,6 @@ class ProfileContainer extends React.Component {
 }
 
 export default compose(
-    // withAuthRedirect,    redirect path=login
     connect(mapStateToProps, { getProfile, getUserStatus, updateUserStatus }),
     withRouter,
 )(ProfileContainer)

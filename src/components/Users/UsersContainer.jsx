@@ -7,9 +7,9 @@ import {
     setCurrentPage, requestUsers,
 } from "../../redux/reducers/usersPage-reducer";
 import {
-    getUsers, getPageSize,
+    getPageSize,
     getTotalCountUsers, getCurrentPage,
-    getIsFetching, getFollowingInProgress
+    getIsFetching, getFollowingInProgress, getUsersSuper
 } from "../../redux/reducers/usersPage-selectors";
 
 // UsersAPIComponent - промежуточная контейнерная компонента, которая оборачивает Users.
@@ -44,7 +44,7 @@ class UsersAPIComponent extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    users: getUsers(state),
+    users: getUsersSuper(state),
     pageSize: getPageSize(state),
     totalCountUsers: getTotalCountUsers(state),
     currentPage: getCurrentPage(state),
