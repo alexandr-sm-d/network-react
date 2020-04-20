@@ -23,6 +23,9 @@ const Navigation = () => {
             <div className={classesStyle.item}>
                 <NavLink to='/settingsApp' activeClassName={classesStyle.activeLink}>Settings</NavLink>
             </div>
+            <div className={classesStyle.item}>
+                <NavLink to='/dev' activeClassName={classesStyle.activeLink}>Dev</NavLink>
+            </div>
         </nav>
     )
 }

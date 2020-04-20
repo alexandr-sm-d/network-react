@@ -15,6 +15,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { intitializingTC } from './redux/reducers/app-reducer';
 import Preloader from './common/preloader/Preloader';
+import Dev from './components/Dev/Dev';
 
 class App extends React.Component {
     componentDidMount() {
@@ -45,6 +46,7 @@ class App extends React.Component {
                             <Route path='/musicList' component={Music} />
                             <Route path='/settingsApp' component={Settings} />
                             <Route path='/login' component={Login} />
+                            <Route path='/dev' component={Dev} />
                         </main>
                     </div>
                     <footer className='foot'>
