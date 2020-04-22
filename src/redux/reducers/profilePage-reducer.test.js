@@ -11,7 +11,7 @@ let state = {
 let action = addNewPostAC('hello')
 
 
-test('posts length should be incremented', () => {
+test('postsData length should be incremented', () => {
     let newState = reducerProfilePage(state, action)
     expect(newState.postsData.length).toBe(3)
 });
