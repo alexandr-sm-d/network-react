@@ -1,5 +1,5 @@
-import reduserDialogsPage from "./redusers/reduser-dialogsPage";
-import reduserProfilePage from "./redusers/reduser-profilePage";
+import reducerDialogsPage from "./reducers/reducer-dialogsPage";
+import reducerProfilePage from "./reducers/reducer-profilePage";
 
 //rerenderApp ниже - заглушка, чтобы потом переопределить.
 
@@ -42,8 +42,8 @@ let store = {
     },
 
     dispatch(action) {
-        this.getState().profilePage = reduserProfilePage(this.getState().profilePage, action);
-        this.getState().dialogsPage = reduserDialogsPage(this.getState().dialogsPage, action);
+        this.getState().profilePage = reducerProfilePage(this.getState().profilePage, action);
+        this.getState().dialogsPage = reducerDialogsPage(this.getState().dialogsPage, action);
         this.rerenderApp(store); //redux store как аргумент сам не передает!!! нужно вручную (*)
     }
 }

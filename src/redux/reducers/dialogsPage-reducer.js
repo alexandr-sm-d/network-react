@@ -16,7 +16,7 @@ let initialState = {
     // newMessageText: '',
 }
 
-const reduserDialogsPage = (state = initialState, action) => {
+const reducerDialogsPage = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE: {
             let stateClone = {...state};
@@ -50,4 +50,4 @@ export const sendNewMessage = (newMessage) => ({ type: SEND_MESSAGE, newMessage}
 export const updateMessageText = (text) =>
     ({ type: UPDATE_NEW_TEXT_MESSAGE, newText: text })
 
-export default reduserDialogsPage;
+export default reducerDialogsPage;

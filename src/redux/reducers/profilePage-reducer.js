@@ -13,7 +13,7 @@ let initialState = {
     status: 'wait server response...'
 }
 
-const reduserProfilePage = (state = initialState, action) => {
+const reducerProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let stateClone = { ...state };
@@ -91,4 +91,4 @@ export const updateUserStatus = (status) => {
     }
 }
 
-export default reduserProfilePage;
+export default reducerProfilePage;
