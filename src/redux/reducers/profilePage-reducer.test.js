@@ -1,4 +1,4 @@
-import reducerProfilePage, { addNewPostAC } from "./profilePage-reducer";
+import reducerProfilePage, { addNewPostAC, deletePost } from "./profilePage-reducer";
 
 
 let state = {
@@ -8,10 +8,21 @@ let state = {
     ]
 }
 
-let action = addNewPostAC('hello')
+let actionAdd = addNewPostAC('hello');
+let actionDelete = deletePost()
 
 
-it('postsData length should be incremented', () => {
-    let newState = reducerProfilePage(state, action)
+test('postsData length should be incremented', () => {
+    let newState = reducerProfilePage(state, actionAdd)
     expect(newState.postsData.length).toBe(3)
 });
+
+test(`context thrid meesage should be 'hello'`, () => {
+    let newState = reducerProfilePage(state, actionAdd)
+    expect(newState.postsData[2].message).toBe('hello') 
+})
+
+test(`deleting post`, () => {
+    let newState = reducerProfilePage(state, actionDelete)
+    expect(newState.postsData.length).toBe(1)
+})

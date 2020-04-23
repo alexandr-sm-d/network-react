@@ -51,4 +51,6 @@ class Counter extends React.Component {
     }
 }
 
+console.log(new Counter())
+
 export default Counter

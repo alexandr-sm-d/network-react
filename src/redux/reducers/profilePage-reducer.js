@@ -2,7 +2,8 @@ import apiDAL from "../../apiDAL/apiDAL";
 
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_USER_STATUS = 'SET_USER_STATUS'
+const SET_USER_STATUS = 'SET_USER_STATUS';
+const DELETE_POST = 'DELETE_POST'
 
 let initialState = {
     postsData: [
@@ -54,6 +55,14 @@ const reducerProfilePage = (state = initialState, action) => {
                 status: action.status
             }
         }
+        case DELETE_POST: {
+            let copyPostsData = [...state.postsData]
+            copyPostsData.pop()
+            return {
+                ...state,
+                postsData: copyPostsData
+            }
+        }
         default:
             return state;
     }
@@ -62,6 +71,7 @@ const reducerProfilePage = (state = initialState, action) => {
 export const addNewPostAC = (postBody) => ({ type: ADD_POST, postBody});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
+export const deletePost = () => ({type: DELETE_POST})
 
 export const getProfile = (uID) => {
     return (dispatch) => {

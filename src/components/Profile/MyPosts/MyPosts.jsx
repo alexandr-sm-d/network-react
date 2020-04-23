@@ -27,6 +27,7 @@ const MyPosts = (props) => {
 }
 
 let MyPostsForm = (props) => {
+    
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
