@@ -56,6 +56,7 @@ const reducerProfilePage = (state = initialState, action) => {
             }
         }
         case DELETE_POST: {
+            debugger
             let copyPostsData = [...state.postsData]
             copyPostsData.pop()
             return {
@@ -71,7 +72,10 @@ const reducerProfilePage = (state = initialState, action) => {
 export const addNewPostAC = (postBody) => ({ type: ADD_POST, postBody});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
-export const deletePost = () => ({type: DELETE_POST})
+export const deletePost = () => {
+    debugger;
+    return {type: DELETE_POST}
+}
 
 export const getProfile = (uID) => {
     return (dispatch) => {

@@ -7,13 +7,13 @@ import { Textarea } from '../../../common/FormsControls/FormsControls';
 
 const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
-
+    // debugger
     function addPost(formData) {
         props.addPost(formData.postForSubmit)
         console.log(formData)
     };
 
-    let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} />);
+    let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} deletePost={props.deletePost}/>);
 
     return (
         <div className={classesStyle.myPost}>

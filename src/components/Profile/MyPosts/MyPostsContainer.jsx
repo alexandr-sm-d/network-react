@@ -1,4 +1,4 @@
-import { addNewPostAC, updateNewPostTextAC } from '../../../redux/reducers/profilePage-reducer.js'
+import { addNewPostAC, updateNewPostTextAC, deletePost } from '../../../redux/reducers/profilePage-reducer.js'
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addPost: (postBody) => dispatch(addNewPostAC(postBody)),
+        deletePost: () => dispatch(deletePost())
     }
 }
 
