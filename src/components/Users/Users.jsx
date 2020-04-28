@@ -2,24 +2,17 @@ import React from 'react';
 import userPhoto from '../../assets/images/us.png';
 import classesStyle from './Users.module.css';
 import { NavLink } from 'react-router-dom';
+import Paginator from '../../common/paginator/Paginator';
 
 const Users = (props) => {
-    // debugger;
-    let pagesCount = Math.ceil(props.totalCountUsers / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
 
     return (
         <div>
-            <div className={classesStyle.toggle_page}>
-                {pages.map((p) => {
-                    return <span
-                        className={props.currentPage === p && classesStyle.selected}
-                        onClick={() => props.onPageChanged(p)}>{p}</span>
-                })}
-            </div>
+            <Paginator totalCountUsers={props.totalCountUsers}
+                pageSize={props.pageSize}
+                currentPage={props.currentPage}
+                onPageChanged={props.onPageChanged}
+            />
 
             <h1>Hi! I'am before componentDidMount</h1>
 
