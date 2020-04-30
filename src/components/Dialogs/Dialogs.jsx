@@ -2,7 +2,7 @@ import React from 'react';
 import classesStyle from './Dialogs.module.css'
 import DialogItem from './DialogsItem/DialogsItem';
 import MessageItem from './MessageItem/MessageItem';
-import { reduxForm, Field } from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import { Textarea } from '../../common/FormsControls/FormsControls';
 import { validatorMaxLength, validatorEmptyPost } from '../../utlis/validators/validatorsProfile';
 
