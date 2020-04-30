@@ -7,3 +7,19 @@
 .selected {
     color: red;
 }
+
+.pages {
+    overflow: auto;
+    padding: 5px;
+}
+
+.page {
+    border: 1px solid black;
+    border-radius: 2px;
+    margin-right: .5%;
+    padding: 4px;
+}
+
+.buttons {
+    display: inline;
+}

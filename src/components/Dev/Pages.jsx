@@ -1,25 +1,53 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import classesStyle from './Pages.module.css'
 
 const Pages = props => {
 
+    let valueOfDisabledForButtonBack = false
+    let valueOfDisabledForButtonNext = false
+
     let n = 187;
     let pages = [];
-    for (let i = 1; i < n; i++) {
+    for (let i = 1; i <= n; i++) {
         pages.push(i)
     }
-    let leftBorderPage = 11;
-    let rightBorderPage = 20;
+
+    const [leftBorderPage, setLeftBorderPage] = useState(1)
+    const [rightBorderPage, setRightBorderPage] = useState(10)
+
+    const next = () => {
+        setLeftBorderPage(leftBorderPage + 10);
+        setRightBorderPage(rightBorderPage + 10);
+    }
+
+    const back = () => {
+        setLeftBorderPage(leftBorderPage - 10);
+        setRightBorderPage(rightBorderPage - 10);
+    }
+
+    if (leftBorderPage == 1) {
+        valueOfDisabledForButtonBack = true
+    } else if (rightBorderPage > n) {
+        valueOfDisabledForButtonNext = true
+    }
 
     return (
         <div className={classesStyle.pages}>
+            <button onClick={back}
+                    className={classesStyle.buttons}
+                    disabled={valueOfDisabledForButtonBack}
+            >back
+            </button>
             {pages
                 .filter(page => page >= leftBorderPage && page <= rightBorderPage)
-                .map(page => <span className={classesStyle.page}>{page}</span>)}
-            <div>
-                <button>back</button>
-                <button>next</button>
-            </div>
+                .map(page => {
+                    return (<span className={classesStyle.page}>{page}</span>)
+                })}
+            <button onClick={next}
+                    className={classesStyle.buttons}
+                    disabled={valueOfDisabledForButtonNext}
+            >next
+            </button>
         </div>
     )
 }
