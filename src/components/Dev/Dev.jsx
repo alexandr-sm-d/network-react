@@ -2,6 +2,7 @@ import React from 'react';
 import Counter from './Counter';
 import Dialog from './Dialog';
 import Pages from './Pages';
+import ChoiseFile from './ChoiseFile';
 
 const Dev = props => {
 
@@ -11,6 +12,7 @@ const Dev = props => {
             <Dialog />
             {/* <Counter /> */}
             <Pages />
+            <ChoiseFile />
         </div>
     )
 }

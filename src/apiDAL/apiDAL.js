@@ -23,6 +23,7 @@ const apiDAL = {
                 .then((resp) => resp.data)
         },
     },
+
     profileAPI: {
         getProfile(userID) {
             return instanceOfAxios.get(`profile/` + userID)
@@ -31,9 +32,22 @@ const apiDAL = {
             return instanceOfAxios.get(`profile/status/` + userID)
         },
         updateStatus(status) {
-            return instanceOfAxios.put(`profile/status/`, {status})
+            return instanceOfAxios.put(`profile/status/`, { status })
+        },
+        setMainPhoto(photo) {
+            let formData = new FormData()
+            formData.append('images', photo)
+            return instanceOfAxios.put(`profile/photo/`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then((resp) => {
+                    return resp.data
+                })
         }
     },
+
     authAPI: {
         authSuccess() {
             return instanceOfAxios.get(`auth/me`)

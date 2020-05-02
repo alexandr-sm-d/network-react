@@ -5,19 +5,27 @@ import ProfileStatusHooks from './ProfileStatusHooks';
 import userPhoto from '../../../assets/images/us.png';
 
 const ProfileInfo = (props) => {
+    
     if (!props.profile) {
         return (
             <Preloader />
         )
     }
+
+    const setMainPhoto = (e) => {
+        props.setMainPhoto(e.target.files[0])
+    }
+
     return (
         <div className={classesStyle.content}>
             {/* <img src='https://getbg.net/upload/full/www.GetBg.net__Team_Chelsea_059529_.jpg' /> */}
             <div className={classesStyle.description}>
-                Main Content
                 <div className={classesStyle.container_ava}>
                     <div className={classesStyle.ava}>
                         <img src={props.profile.photos.large || userPhoto} />
+                    </div>
+                    <div>
+                        {!props.isOwner && <input type="file" onChange={setMainPhoto}/>}
                     </div>
                     Ava + decripption
                 </div>

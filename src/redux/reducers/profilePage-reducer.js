@@ -3,7 +3,8 @@ import apiDAL from "../../apiDAL/apiDAL";
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
-const DELETE_POST = 'DELETE_POST'
+const DELETE_POST = 'DELETE_POST';
+const MAIN_PHOTO_DONE = 'MAIN_PHOTO_DONE'
 
 let initialState = {
     postsData: [
@@ -11,7 +12,7 @@ let initialState = {
         { id: 2, message: 'its my firsr react project', likeCounts: 10 }
     ],
     profile: null,
-    status: 'wait server response...'
+    status: 'wait server response...',
 }
 
 const reducerProfilePage = (state = initialState, action) => {
@@ -56,12 +57,17 @@ const reducerProfilePage = (state = initialState, action) => {
             }
         }
         case DELETE_POST: {
-            debugger
             let copyPostsData = [...state.postsData]
             copyPostsData.pop()
             return {
                 ...state,
                 postsData: copyPostsData
+            }
+        }
+        case MAIN_PHOTO_DONE: {
+            return {
+                ...state,
+                profile : {...state.profile, photos: action.photo}
             }
         }
         default:
@@ -73,9 +79,10 @@ export const addNewPostAC = (postBody) => ({ type: ADD_POST, postBody});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
 export const deletePost = () => {
-    debugger;
+    // debugger;
     return {type: DELETE_POST}
 }
+export const setMainPhotoDone = (photo) => ({type: MAIN_PHOTO_DONE, photo})
 
 export const getProfile = (uID) => {
     return (dispatch) => {
@@ -102,6 +109,16 @@ export const updateUserStatus = (status) => {
                 if (resp.data.resultCode === 0)
                 dispatch(setUserStatus(status))
             })
+    }
+}
+
+export const setMainPhoto = (file) => {
+    return (dispatch) => {
+        apiDAL.profileAPI.setMainPhoto(file)
+        .then(resp => {
+            if (resp.data.resultCode === 0)
+            dispatch(setUserStatus(resp.data.photos))
+        })
     }
 }
 
