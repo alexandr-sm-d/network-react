@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -15,13 +15,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { intitializingTC } from './redux/reducers/app-reducer';
 import Preloader from './common/preloader/Preloader';
-import Dev from './components/Dev/Dev';
+// import Dev from './components/Dev/Dev';
+
+const Dev = React.lazy(() => import('./components/Dev/Dev'))
 
 class App extends React.Component {
     componentDidMount() {
         this.props.intitializing()
     }
-    
+
     render() {
 
         {
@@ -46,7 +48,11 @@ class App extends React.Component {
                             <Route path='/musicList' component={Music} />
                             <Route path='/settingsApp' component={Settings} />
                             <Route path='/login' component={Login} />
-                            <Route path='/dev' component={Dev} />
+                            <Route path='/dev' render={() => 
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <Dev />
+                                </Suspense>
+                            } />
                         </main>
                     </div>
                     <footer className='foot'>
