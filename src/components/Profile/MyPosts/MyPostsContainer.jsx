@@ -1,6 +1,7 @@
 import { addNewPostAC, updateNewPostTextAC, deletePost } from '../../../redux/reducers/profilePage-reducer.js'
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +11,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addPost: (postBody) => dispatch(addNewPostAC(postBody)),
+        addPost: (postBody) => {
+            dispatch(addNewPostAC(postBody))
+            dispatch(reset('profileAddPost')) //check it!!!
+        },
         deletePost: () => dispatch(deletePost())
     }
 }

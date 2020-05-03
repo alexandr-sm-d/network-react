@@ -7,7 +7,7 @@ import { Textarea } from '../../../common/FormsControls/FormsControls';
 
 const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
-    // debugger
+    
     function addPost(formData) {
         props.addPost(formData.postForSubmit)
         console.log(formData)
