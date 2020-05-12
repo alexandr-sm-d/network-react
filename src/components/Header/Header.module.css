@@ -7,12 +7,12 @@
 /*}*/
 
 .authLogin {
-    position: relative;
-    right: 30px;
-    top: 10px;
+    /*position: absolute;*/
+    /*right: 5px;*/
+    /*top: 10px;*/
     float: right;
 }
 
-.authLogin span {
-    background-color: wheat;
+.iconLogin {
+    border: 1px solid black;
 }
