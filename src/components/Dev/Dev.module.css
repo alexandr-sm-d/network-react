@@ -1,3 +1,11 @@
 .default {
     background: #ff7875;
 }
+
+.layout {
+    background: red;
+}
+
+.foot {
+    background: green;
+}

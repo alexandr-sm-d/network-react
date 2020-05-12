@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.headerAtdn {
+    background: #9254de;
+}
+
+.navigationAtdn {
+    background: #d3adf7;
+}
+
+.contentAtdn {
+    background: #adc6ff;
+}
+
+.contentAtdn::-webkit-scrollbar { width: 0; }
+
+.layout {
+    background: red;
+    height: 100vh;
+}
+
+.foot {
+    background: #87e8de;
+}
