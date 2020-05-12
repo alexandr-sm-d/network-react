@@ -15,7 +15,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { intitializingTC } from './redux/reducers/app-reducer';
 import Preloader from './common/preloader/Preloader';
-// import Dev from './components/Dev/Dev';
+import 'antd/dist/antd.css'
 
 const Dev = React.lazy(() => import('./components/Dev/Dev'))
 
