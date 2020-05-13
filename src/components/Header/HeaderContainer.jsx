@@ -11,10 +11,14 @@ class HeaderContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    login: state.auth.login,
-    isAuth: state.auth.isAuth,
-})
+const mapStateToProps = (state) => {
+    console.log('mpst Header');
+    return {
+        login: state.auth.login,
+        isAuth: state.auth.isAuth,
+        photo: state.profilePage.profile,
+    }
+}
 
 const mapDispatchToProps = (dispatch) => ({
     setAuthUserData: (value) => {

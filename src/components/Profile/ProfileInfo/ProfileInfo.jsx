@@ -18,7 +18,6 @@ const ProfileInfo = (props) => {
 
     return (
         <div className={classesStyle.content}>
-            {/* <img src='https://getbg.net/upload/full/www.GetBg.net__Team_Chelsea_059529_.jpg' /> */}
             <div className={classesStyle.description}>
                 <div className={classesStyle.container_ava}>
                     <div className={classesStyle.ava}>

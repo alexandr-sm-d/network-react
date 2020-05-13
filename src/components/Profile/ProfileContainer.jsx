@@ -6,7 +6,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 
 let mapStateToProps = (state) => {
-    console.log('mstp profile');
+    // console.log('mstp profile');
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,

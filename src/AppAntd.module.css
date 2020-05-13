@@ -14,11 +14,13 @@
     background: #ffccc7;
     border-radius: 15px;
     margin-right: 5px;
+    width: 20%;
 }
 
 .contentAtdn {
     background: #adc6ff;
     border-radius: 15px;
+    width: 80%;
 }
 
 .contentAtdn::-webkit-scrollbar { width: 0; }
