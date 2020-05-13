@@ -13,9 +13,9 @@ const LogInOut = (props) => {
                         <span>
                             {(props.photo)
                                 ? <img className={classesStyle.photoLogin} src={props.photo.photos.small || userPhoto}/>
-                                : <LoadingOutlined/>
+                                : <LoadingOutlined style={{marginRight: '10px',}}/>
                             }
-                        </span>
+                                </span>
                     <Button
                         type='primary'
                         onClick={props.logout}
@@ -35,9 +35,9 @@ const LogInOut = (props) => {
                         icon={<LoginOutlined/>}
                         style={{
                             width: '100px',
-                            background: '#73d13d',
+                            background: '#4de880',
                             borderRadius: '16px',
-                            borderColor: '#73d13d',
+                            borderColor: '#4de880',
                         }}>
                         Log in
                     </Button>

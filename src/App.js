@@ -4,7 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
-import {Route, withRouter} from 'react-router-dom';
+import {Link, Route, withRouter} from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
@@ -18,6 +18,7 @@ import Preloader from './common/preloader/Preloader';
 import 'antd/dist/antd.css'
 import {Layout} from "antd";
 import classesStyle from "./AppAntd.module.css";
+import {InstagramOutlined, GithubFilled, FacebookOutlined} from "@ant-design/icons";
 
 const {Header, Footer, Sider, Content} = Layout;
 const Dev = React.lazy(() => import('./components/Dev/Dev'))
@@ -95,7 +96,15 @@ class App extends React.Component {
                                 </Content>
                             </Layout>
 
-                            <Footer className={classesStyle.foot}>Footer</Footer>
+                            <Footer className={classesStyle.foot}>
+                                <div className={classesStyle.content}>
+                                    <a href='https://github.com/alexandr-sm-d'>
+                                        <GithubFilled style={{paddingRight : '10px'}}/>
+                                    </a>
+                                    <InstagramOutlined style={{paddingRight : '10px'}}/>
+                                    <FacebookOutlined style={{paddingRight : '10px'}}/>
+                                </div>
+                            </Footer>
                         </Layout>
                     </div>
                 </div>
