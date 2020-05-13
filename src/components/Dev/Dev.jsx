@@ -30,22 +30,25 @@ const Dev = props => {
             <Button className={classesStyle.default}>Default</Button>
             <Button type="dashed">Dashed</Button>
             <Button type="link">Link</Button>
+            <div>
+                <Button className={classesStyle.logIn}>Log In</Button>
+            </div>
 
-            <HomeOutlined />
-            <SettingFilled />
-            <SmileOutlined />
-            <SyncOutlined spin />
-            <SmileOutlined rotate={180} />
-            <LoadingOutlined />
+            {/*<HomeOutlined />*/}
+            {/*<SettingFilled />*/}
+            {/*<SmileOutlined />*/}
+            {/*<SyncOutlined spin />*/}
+            {/*<SmileOutlined rotate={180} />*/}
+            {/*<LoadingOutlined />*/}
 
-            <Layout className={classesStyle.layout}>
-                <Header>Header</Header>
-                <Layout>
-                    <Sider>Sider</Sider>
-                    <Content>Content</Content>
-                </Layout>
-                <Footer className={classesStyle.foot}>Footer</Footer>
-            </Layout>
+            {/*<Layout className={classesStyle.layout}>*/}
+            {/*    <Header>Header</Header>*/}
+            {/*    <Layout>*/}
+            {/*        <Sider>Sider</Sider>*/}
+            {/*        <Content>Content</Content>*/}
+            {/*    </Layout>*/}
+            {/*    <Footer className={classesStyle.foot}>Footer</Footer>*/}
+            {/*</Layout>*/}
 
         </div>
     )

@@ -66,36 +66,38 @@ class App extends React.Component {
 
         return (
             <div className={classesStyle.container}>
-                <div style={{width: '60%'}}>
-                    <Layout className={classesStyle.layout}>
-                        <Header className={classesStyle.headerAtdn}>
-                            <HeaderContainer/>
-                        </Header>
+                <div className={classesStyle.mainCol}>
+                    <div style={{width: '60%'}}>
+                        <Layout className={classesStyle.layout}>
+                            <Header className={classesStyle.headerAtdn}>
+                                <HeaderContainer/>
+                            </Header>
 
-                        <Layout>
-                            <Sider className={classesStyle.navigationAtdn}>
-                                <Navigation/>
-                            </Sider>
+                            <Layout>
+                                <Sider className={classesStyle.navigationAtdn}>
+                                    <Navigation/>
+                                </Sider>
 
-                            <Content className={classesStyle.contentAtdn}>
-                                <main>
-                                    <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
-                                    <Route path='/users' render={() => <UsersContainer/>}/>
-                                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                                    <Route path='/musicList' component={Music}/>
-                                    <Route path='/settingsApp' component={Settings}/>
-                                    <Route path='/login' component={Login}/>
-                                    <Route path='/dev' render={() =>
-                                        <Suspense fallback={<div>Loading...</div>}>
-                                            <Dev/>
-                                        </Suspense>
-                                    }/>
-                                </main>
-                            </Content>
+                                <Content className={classesStyle.contentAtdn}>
+                                    <main>
+                                        <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
+                                        <Route path='/users' render={() => <UsersContainer/>}/>
+                                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                                        <Route path='/musicList' component={Music}/>
+                                        <Route path='/settingsApp' component={Settings}/>
+                                        <Route path='/login' component={Login}/>
+                                        <Route path='/dev' render={() =>
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <Dev/>
+                                            </Suspense>
+                                        }/>
+                                    </main>
+                                </Content>
+                            </Layout>
+
+                            <Footer className={classesStyle.foot}>Footer</Footer>
                         </Layout>
-
-                        <Footer className={classesStyle.foot}>Footer</Footer>
-                    </Layout>
+                    </div>
                 </div>
             </div>
         )

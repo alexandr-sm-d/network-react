@@ -1,5 +1,11 @@
 .default {
     background: #ff7875;
+    border-radius: 20px;
+}
+
+.logIn {
+    background: #ff7875;
+    border-radius: 20px;
 }
 
 .layout {
