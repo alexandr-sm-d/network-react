@@ -5,10 +5,10 @@ import ProfileStatusHooks from './ProfileStatusHooks';
 import userPhoto from '../../../assets/images/us.png';
 
 const ProfileInfo = (props) => {
-    
+
     if (!props.profile) {
         return (
-            <Preloader />
+            <Preloader/>
         )
     }
 
@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
             <div className={classesStyle.description}>
                 <div className={classesStyle.container_ava}>
                     <div className={classesStyle.ava}>
-                        <img src={props.profile.photos.large || userPhoto} />
+                        <img src={props.profile.photos.large || userPhoto}/>
                     </div>
                     <div>
                         {!props.isOwner && <input type="file" onChange={setMainPhoto}/>}

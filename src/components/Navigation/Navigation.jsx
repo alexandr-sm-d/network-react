@@ -21,31 +21,31 @@ const Navigation = () => {
             </div>
             <div className={classesStyle.item}>
                 <NavLink to='/users' activeClassName={classesStyle.activeLink}>
-                    <TeamOutlined />
+                    <TeamOutlined className={classesStyle.navigationIcon}/>
                     Users
                 </NavLink>
             </div>
             <div className={classesStyle.item}>
                 <NavLink to='/dialogs' activeClassName={classesStyle.activeLink}>
-                    <MessageOutlined />
+                    <MessageOutlined className={classesStyle.navigationIcon}/>
                     Message
                 </NavLink>
             </div>
             <div className={classesStyle.item}>
                 <NavLink to='/musicList' activeClassName={classesStyle.activeLink}>
-                    <BellOutlined />
+                    <BellOutlined className={classesStyle.navigationIcon}/>
                     Music
                 </NavLink>
             </div>
             <div className={classesStyle.item}>
                 <NavLink to='/settingsApp' activeClassName={classesStyle.activeLink}>
-                    <SettingOutlined />
+                    <SettingOutlined className={classesStyle.navigationIcon}/>
                     Settings
                 </NavLink>
             </div>
             <div className={classesStyle.item}>
                 <NavLink to='/dev' activeClassName={classesStyle.activeLink}>
-                    <RocketOutlined />
+                    <RocketOutlined className={classesStyle.navigationIcon}/>
                     Dev
                 </NavLink>
             </div>

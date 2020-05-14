@@ -76,7 +76,7 @@ class App extends React.Component {
 
                             <Layout>
                                 <Sider className={classesStyle.navigationAtdn}>
-                                    <Navigation/>
+                                    <Navigation />
                                 </Sider>
 
                                 <Content className={classesStyle.contentAtdn}>

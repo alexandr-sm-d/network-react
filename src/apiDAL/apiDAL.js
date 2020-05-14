@@ -35,6 +35,7 @@ const apiDAL = {
             return instanceOfAxios.put(`profile/status/`, { status })
         },
         setMainPhoto(photo) {
+            debugger;
             let formData = new FormData()
             formData.append('images', photo)
             return instanceOfAxios.put(`profile/photo/`, formData, {
