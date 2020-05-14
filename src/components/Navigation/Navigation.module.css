@@ -6,12 +6,21 @@
 /*    height: 100%;*/
 /*    padding: 10px;*/
 /*}*/
+.item {
+    padding-left: 5px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
 
 .item a {
-    color: white;
+    color: #424445;
     text-decoration: none;
 }
 
-.item a.activeLink {
-    color: gold;
+.item:hover {
+    background: #808587;
 }
+
+.item a.activeLink {
+    color: #b8a679;
+}
+
