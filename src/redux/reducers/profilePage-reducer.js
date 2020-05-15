@@ -116,6 +116,7 @@ export const setMainPhoto = (file) => {
     return (dispatch) => {
         apiDAL.profileAPI.setMainPhoto(file)
         .then(resp => {
+            console.log(resp)
             if (resp.data.resultCode === 0)
             dispatch(setUserStatus(resp.data.photos))
         })

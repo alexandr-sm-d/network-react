@@ -1,7 +1,6 @@
 .content img {
-    display: block;
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
 }
 
 .description {
@@ -9,10 +8,40 @@
 }
 
 .container_ava {
-    /* position: relative; */
+    position: relative;
+    height: 200px;
+    width: 200px;
 }
+
 .ava {
-    margin-left: 0px;
     width: 200px;
     height: 200px;
+    position: absolute;
+    left: 0px;
+}
+
+.fileform {
+    position: absolute;
+    height: 26px;
+    width: 100%;
+    bottom: 0px;
+    opacity: 0;
+    background: gray;
+}
+
+.fileform:hover {
+    opacity: .8;
+    color: black;
+}
+
+.fileform .selectbutton {
+    font-family: 'Zilla Slab', 'Ubuntu Condensed', sans-serif;
+    position: absolute;
+    right: 44px;
+}
+
+.fileform input {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
 }

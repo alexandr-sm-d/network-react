@@ -3,9 +3,10 @@ import classesStyle from './ProfileInfo.module.css';
 import Preloader from '../../../common/preloader/Preloader';
 import ProfileStatusHooks from './ProfileStatusHooks';
 import userPhoto from '../../../assets/images/us.png';
+import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
+
 
 const ProfileInfo = (props) => {
-
     if (!props.profile) {
         return (
             <Preloader/>
@@ -23,10 +24,15 @@ const ProfileInfo = (props) => {
                     <div className={classesStyle.ava}>
                         <img src={props.profile.photos.large || userPhoto}/>
                     </div>
-                    <div>
-                        {!props.isOwner && <input type="file" onChange={setMainPhoto}/>}
+                    {!props.isOwner &&
+                    <div className={classesStyle.fileform}>
+                        <div className={classesStyle.selectbutton}>
+                            <UploadOutlined />
+                            change photo
+                        </div>
+                        <input type="file" onChange={setMainPhoto}/>
                     </div>
-                    Ava + decripption
+                    }
                 </div>
                 <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
             </div>
