@@ -4,17 +4,19 @@
     font-size: 20px;
 }
 
-.item a {
+a .item{
     color: #424445;
     text-decoration: none;
+    transition: color .3s;
 }
 
 .item:hover {
     background: #808587;
+    color: #adc6ff;
 }
 
-.item a.activeLink {
-    color: #b8a679;
+.activeLink {
+    color: #0355f8;
 }
 
 .navigationIcon {
