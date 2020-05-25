@@ -1,6 +1,7 @@
 .item {
     color: black;
     margin-top: 10px;
+    border: 2px solid green;
 }
 
 .item img {

@@ -34,6 +34,7 @@ const Dev = props => {
                 <Button className={classesStyle.logIn}>Log In</Button>
             </div>
 
+
             {/*<HomeOutlined />*/}
             {/*<SettingFilled />*/}
             {/*<SmileOutlined />*/}

@@ -1,24 +1,28 @@
 import React from 'react';
 import classesStyle from './MyPosts.module.css'
 import Post from './Post/Post';
-import { reduxForm, Field } from 'redux-form';
-import { validatorEmptyPost, validatorMaxLength } from '../../../utlis/validators/validatorsProfile';
-import { Textarea } from '../../../common/FormsControls/FormsControls';
+import {reduxForm, Field} from 'redux-form';
+import {validatorEmptyPost, validatorMaxLength} from '../../../utlis/validators/validatorsProfile';
+import {Textarea} from '../../../common/FormsControls/FormsControls';
 
 const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
-    
+
     function addPost(formData) {
         props.addPost(formData.postForSubmit)
         console.log(formData)
     };
 
-    let posts = props.postsData.map((p) => <Post message={p.message} likeCounts={p.likeCounts} deletePost={props.deletePost}/>);
+    let posts = props.postsData.map((p) =>
+        <Post message={p.message}
+              likeCounts={p.likeCounts}
+              deletePost={props.deletePost}
+        />);
 
     return (
         <div className={classesStyle.myPost}>
             <h2>My posts</h2>
-            <MyPostsForm onSubmit={addPost} />
+            <MyPostsForm onSubmit={addPost}/>
             <div className={classesStyle.posts}>
                 {posts}
             </div>
@@ -27,9 +31,9 @@ const MyPosts = (props) => {
 }
 
 let MyPostsForm = (props) => {
-    
+
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} style={{border: '2px solid black'}}>
             <div>
                 <Field
                     component={Textarea}
@@ -45,6 +49,6 @@ let MyPostsForm = (props) => {
     )
 }
 
-MyPostsForm = reduxForm({ form: 'profileAddPost' })(MyPostsForm)
+MyPostsForm = reduxForm({form: 'profileAddPost'})(MyPostsForm)
 
 export default MyPosts;
