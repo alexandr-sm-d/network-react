@@ -6,3 +6,11 @@
 .form.error span {
     color: red;
 }
+
+.textarea {
+    display: block;
+    border: 3px solid gold;
+    width: 100%;
+    height: 100%;
+    resize: none;
+}

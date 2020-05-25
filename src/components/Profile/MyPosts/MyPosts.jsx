@@ -13,11 +13,14 @@ const MyPosts = (props) => {
         console.log(formData)
     };
 
-    let posts = props.postsData.map((p) =>
-        <Post message={p.message}
-              likeCounts={p.likeCounts}
-              deletePost={props.deletePost}
-        />);
+    let posts = props.postsData
+        .map((p) =>
+            <Post message={p.message}
+                  postID={p.id}
+                  likeCounts={p.likeCounts}
+                  deletePost={props.deletePost}
+            />)
+        .reverse();
 
     return (
         <div className={classesStyle.myPost}>
@@ -33,22 +36,23 @@ const MyPosts = (props) => {
 let MyPostsForm = (props) => {
 
     return (
-        <form onSubmit={props.handleSubmit} style={{border: '2px solid black'}}>
-            <div>
+        <form onSubmit={props.handleSubmit}>
+            <div className={classesStyle.newPost}>
                 <Field
                     component={Textarea}
                     name="postForSubmit"
                     placeholder="Enter your post"
                     validate={[validatorEmptyPost, maxLength10]}
                 />
-            </div>
-            <div>
-                <button>Add post</button>
+                <div className={classesStyle.addPostButton}>
+                    <button>Add post</button>
+                </div>
             </div>
         </form>
     )
 }
 
 MyPostsForm = reduxForm({form: 'profileAddPost'})(MyPostsForm)
+
 
 export default MyPosts;

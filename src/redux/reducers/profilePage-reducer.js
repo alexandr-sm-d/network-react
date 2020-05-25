@@ -8,8 +8,8 @@ const MAIN_PHOTO_DONE = 'MAIN_PHOTO_DONE'
 
 let initialState = {
     postsData: [
-        { id: 1, message: 'hi everyone!', likeCounts: 12 },
-        { id: 2, message: 'its my firsr react project', likeCounts: 10 }
+        {id: 1, message: 'hi everyone!', likeCounts: 12},
+        {id: 2, message: 'its my first react project', likeCounts: 10}
     ],
     profile: null,
     status: 'wait server response...',
@@ -18,7 +18,7 @@ let initialState = {
 const reducerProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let stateClone = { ...state };
+            let stateClone = {...state};
             stateClone.postsData = [...state.postsData];
 
             if (stateClone.newPostText == '') {
@@ -58,16 +58,15 @@ const reducerProfilePage = (state = initialState, action) => {
         }
         case DELETE_POST: {
             let copyPostsData = [...state.postsData]
-            copyPostsData.pop()
             return {
                 ...state,
-                postsData: copyPostsData
+                postsData: copyPostsData.filter((post) => post.id !== action.postID)
             }
         }
         case MAIN_PHOTO_DONE: {
             return {
                 ...state,
-                profile : {...state.profile, photos: action.photo}
+                profile: {...state.profile, photos: action.photo}
             }
         }
         default:
@@ -75,14 +74,14 @@ const reducerProfilePage = (state = initialState, action) => {
     }
 }
 
-export const addNewPostAC = (postBody) => ({ type: ADD_POST, postBody});
-export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const addNewPostAC = (postBody) => ({type: ADD_POST, postBody});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
-export const deletePost = () => {
-    // debugger;
-    return {type: DELETE_POST}
+export const deletePost = (postID) => {
+    return {type: DELETE_POST, postID}
 }
-export const setMainPhotoDone = (photo) => ({type: MAIN_PHOTO_DONE, photo})
+
+// export const setMainPhotoDone = (photo) => ({type: MAIN_PHOTO_DONE, photo})
 
 export const getProfile = (uID) => {
     return (dispatch) => {
@@ -107,7 +106,7 @@ export const updateUserStatus = (status) => {
         apiDAL.profileAPI.updateStatus(status)
             .then(resp => {
                 if (resp.data.resultCode === 0)
-                dispatch(setUserStatus(status))
+                    dispatch(setUserStatus(status))
             })
     }
 }
@@ -115,11 +114,11 @@ export const updateUserStatus = (status) => {
 export const setMainPhoto = (file) => {
     return (dispatch) => {
         apiDAL.profileAPI.setMainPhoto(file)
-        .then(resp => {
-            console.log(resp)
-            if (resp.data.resultCode === 0)
-            dispatch(setUserStatus(resp.data.photos))
-        })
+            .then(resp => {
+                console.log(resp)
+                if (resp.data.resultCode === 0)
+                    dispatch(setUserStatus(resp.data.photos))
+            })
     }
 }
 

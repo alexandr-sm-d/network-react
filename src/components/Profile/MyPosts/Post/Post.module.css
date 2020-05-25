@@ -2,6 +2,8 @@
     color: black;
     margin-top: 10px;
     border: 2px solid green;
+    padding: 15px;
+    border-radius: 25px;
 }
 
 .item img {
@@ -10,3 +12,4 @@
     border-radius: 100%;
     display: inline;
 }
+

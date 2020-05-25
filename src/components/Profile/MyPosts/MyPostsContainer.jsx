@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(addNewPostAC(postBody))
             dispatch(reset('profileAddPost')) //check it!!!
         },
-        deletePost: () => dispatch(deletePost())
+        deletePost: (postID) => dispatch(deletePost(postID))
     }
 }
 

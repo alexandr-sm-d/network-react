@@ -4,7 +4,8 @@ import classesStyle from './Post.module.css'
 const Post = (props) => {
     // debugger
     const delPost = () => {
-        props.deletePost()
+        console.log(props.postID)
+        props.deletePost(props.postID)
     }
     
     return (
