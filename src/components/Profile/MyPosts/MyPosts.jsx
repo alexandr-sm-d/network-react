@@ -4,8 +4,7 @@ import Post from './Post/Post';
 import {reduxForm, Field} from 'redux-form';
 import {validatorEmptyPost, validatorMaxLength} from '../../../utlis/validators/validatorsProfile';
 import {Textarea} from '../../../common/FormsControls/FormsControls';
-import SendOutlined from "@ant-design/icons/lib/icons/SendOutlined";
-import {Button} from "antd";
+import { SendOutlined } from '@ant-design/icons';
 
 const maxLength10 = validatorMaxLength(10);
 const MyPosts = (props) => {
@@ -47,12 +46,9 @@ let MyPostsForm = (props) => {
                     validate={[validatorEmptyPost, maxLength10]}
                 />
                 <div className={classesStyle.addPostButton}>
-                    <Button icon={<SendOutlined />}
-                            style={{
-                                border: 'none',
-                                borderRadius: '100%',
-                            }}>
-                    </Button>
+                    <button className={classesStyle.submitPost}>
+                        <SendOutlined/>
+                    </button>
                 </div>
             </div>
         </form>

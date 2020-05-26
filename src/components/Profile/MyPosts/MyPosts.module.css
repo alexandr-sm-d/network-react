@@ -18,3 +18,19 @@
     top: 10px;
     right: 10px;
 }
+
+.submitPost {
+    border: none;
+    background: inherit;
+}
+
+.submitPost:hover {
+    color: #24ccff;
+    transition: color .25s;
+}
+
+.submitPost,
+.submitPost:active,
+.submitPost:focus {
+    outline: none;
+}

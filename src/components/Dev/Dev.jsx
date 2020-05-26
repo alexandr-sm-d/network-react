@@ -13,6 +13,7 @@ import {
     SyncOutlined,
     LoadingOutlined,
 } from '@ant-design/icons';
+import SendOutlined from "@ant-design/icons/lib/icons/SendOutlined";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -50,6 +51,13 @@ const Dev = props => {
             {/*    </Layout>*/}
             {/*    <Footer className={classesStyle.foot}>Footer</Footer>*/}
             {/*</Layout>*/}
+
+            {/*<Button icon={<SendOutlined />}*/}
+            {/*        style={{*/}
+            {/*            border: 'none',*/}
+            {/*            borderRadius: '100%',*/}
+            {/*        }}>*/}
+            {/*</Button>*/}
 
         </div>
     )
