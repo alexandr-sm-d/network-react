@@ -1,4 +1,5 @@
 .item {
+    background: #a2b2b87c;
     color: black;
     margin-top: 10px;
     border: 2px solid green;
@@ -13,3 +14,19 @@
     display: inline;
 }
 
+.deletePostBtn {
+    background: inherit;
+    color: #ff7875;
+    border: none;
+}
+
+.deletePostBtn,
+.deletePostBtn:active,
+.deletePostBtn:focus {
+    outline: none;
+}
+
+.deletePostBtn:hover {
+    color: darkred;
+    transition: color .3s;
+}
