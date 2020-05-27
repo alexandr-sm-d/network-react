@@ -1,14 +1,14 @@
 .myPost {
     margin: 10px;
-    border:  2px solid red;
+    /*border:  2px solid red;*/
 }
 
 .posts {
-    border: 2px solid blueviolet;
+    /*border: 2px solid blueviolet;*/
 }
 
 .newPost {
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     position: relative;
 }
 

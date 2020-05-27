@@ -1,9 +1,10 @@
 .item {
-    background: #a2b2b87c;
+    /*position: relative;*/
+    background: #f7f7f7;
     color: black;
     margin-top: 10px;
-    border: 2px solid green;
-    padding: 15px;
+    /*border: 2px solid green;*/
+    padding: 15px 15px 5px;
     border-radius: 25px;
 }
 
@@ -12,12 +13,23 @@
     height: 50px;
     border-radius: 100%;
     display: inline;
+    margin-right: 10px;
+}
+
+.actionForPost {
+    padding: 0;
+    position: relative;
+    margin-top: 10px;
 }
 
 .deletePostBtn {
+    position: absolute;
+    right: 0;
+    bottom: -4px;
     background: inherit;
-    color: #ff7875;
+    color: #fcb1b1;
     border: none;
+    font-size: 24px;
 }
 
 .deletePostBtn,

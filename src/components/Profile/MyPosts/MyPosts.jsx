@@ -6,7 +6,7 @@ import {validatorEmptyPost, validatorMaxLength} from '../../../utlis/validators/
 import {Textarea} from '../../../common/FormsControls/FormsControls';
 import { SendOutlined } from '@ant-design/icons';
 
-const maxLength10 = validatorMaxLength(10);
+const maxLength50 = validatorMaxLength(50);
 const MyPosts = (props) => {
 
     function addPost(formData) {
@@ -20,6 +20,7 @@ const MyPosts = (props) => {
                   postID={p.id}
                   likeCounts={p.likeCounts}
                   deletePost={props.deletePost}
+                  profile={props.profile}
             />)
         .reverse();
 
@@ -43,7 +44,7 @@ let MyPostsForm = (props) => {
                     component={Textarea}
                     name="postForSubmit"
                     placeholder="Enter your post"
-                    validate={[validatorEmptyPost, maxLength10]}
+                    validate={[validatorEmptyPost, maxLength50]}
                 />
                 <div className={classesStyle.addPostButton}>
                     <button className={classesStyle.submitPost}>
