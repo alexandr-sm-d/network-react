@@ -34,7 +34,9 @@ const ProfileInfo = (props) => {
                     </div>
                     }
                 </div>
-                <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <div className={classesStyle.information}>
+                    <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                </div>
             </div>
         </div>
     )

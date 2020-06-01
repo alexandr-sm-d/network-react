@@ -1,3 +1,7 @@
+.content {
+    box-sizing: border-box;
+}
+
 .content img {
     width: 200px;
     height: 200px;
@@ -7,7 +11,17 @@
     margin: 10px;
 }
 
+.information {
+    display: inline-block;
+    /*border: 1px solid green;*/
+    width: calc(100% - 200px);
+    padding-left: 5px;
+    height: auto;
+    vertical-align: top;
+}
+
 .container_ava {
+    display: inline-block;
     position: relative;
     height: 200px;
     width: 200px;

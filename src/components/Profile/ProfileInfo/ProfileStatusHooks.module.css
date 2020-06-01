@@ -1,0 +1,25 @@
+.status {
+    display: inline-block;
+    width: 100%;
+}
+
+.spanStatus, .inputStatus {
+    border-bottom: 1px solid #bab8b8;
+}
+
+.spanStatus {
+    display: inline-block;
+    width: 100%;
+}
+
+.spanStatus:hover {
+    background: #faf5f5;
+    transition: background-color .5s;
+}
+
+.inputStatus {
+    width: 100%;
+    border: 0;
+    outline: none;
+}
+
