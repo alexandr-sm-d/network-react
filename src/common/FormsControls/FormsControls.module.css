@@ -15,6 +15,7 @@
     height: 100%;
     resize: none;
     padding-left: 15px;
+    padding-right: 34px;
 }
 
 .textarea:focus {

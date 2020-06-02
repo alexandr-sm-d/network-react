@@ -21,7 +21,7 @@
 
 .submitPost {
     border: none;
-    background: inherit;
+    background: white;
 }
 
 .submitPost:hover {
