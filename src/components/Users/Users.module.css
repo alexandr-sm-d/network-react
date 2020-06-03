@@ -1,3 +1,11 @@
+.pagination {
+    background: inherit;
+}
+
+.usersPage {
+    border: 3px solid gold;
+}
+
 .user {
     border: 2px dashed blue;
     padding: 20px;

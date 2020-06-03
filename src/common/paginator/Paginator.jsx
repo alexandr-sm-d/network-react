@@ -49,8 +49,8 @@ const Paginator = (props) => {
 
             <button onClick={next}
                     className={classesStyle.buttons}
-                    disabled={valueOfDisabledForButtonNext}
-            >next
+                    disabled={valueOfDisabledForButtonNext}>
+                next
             </button>
         </div>
     )

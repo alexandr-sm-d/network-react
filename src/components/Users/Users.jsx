@@ -1,17 +1,24 @@
 import React from 'react';
 import userPhoto from '../../assets/images/us.png';
 import classesStyle from './Users.module.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Paginator from '../../common/paginator/Paginator';
+import {Pagination} from "antd";
 
 const Users = (props) => {
 
     return (
-        <div>
-            <Paginator totalCountUsers={props.totalCountUsers}
-                pageSize={props.pageSize}
-                currentPage={props.currentPage}
-                onPageChanged={props.onPageChanged}
+        <div className={classesStyle.usersPage}>
+            {/*<Paginator*/}
+            {/*    totalCountUsers={props.totalCountUsers}*/}
+            {/*    pageSize={props.pageSize}*/}
+            {/*    currentPage={props.currentPage}*/}
+            {/*    onPageChanged={props.onPageChanged}*/}
+            {/*/>*/}
+            <Pagination
+                className={classesStyle.pagination}
+                onChange={props.onPageChanged}
+                total={props.totalCountUsers}
             />
 
             <h1>Hi! I'am before componentDidMount</h1>
@@ -23,7 +30,7 @@ const Users = (props) => {
                             u.photos.small != null
                                 ? u.photos.small
                                 : userPhoto
-                        } />
+                        }/>
                     </NavLink>
                     <div> {u.name} </div>
                     <div> {'u.location.cityName'} </div>

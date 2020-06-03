@@ -1,4 +1,5 @@
 .toggle_page {
+    border: 2px solid red;
     overflow-x: auto;
     padding-left: 5%;
     font-size: 26px;
