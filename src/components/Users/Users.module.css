@@ -1,15 +1,46 @@
-.pagination {
-    background: inherit;
+.photo, .info {
+    display: inline-block;
 }
 
-.usersPage {
-    border: 3px solid gold;
+.info {
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+.follow, .unfollow {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.unfollow {
+    background: #51e883;
+}
+
+.follow {
+    background: #ff737c;
+}
+
+.follow:focus, .unfollow:focus {
+    border-color: #b5ddf5;
+    outline-color: transparent;
+    outline-style: none;
+}
+
+.pagination {
+    background: #e0dcdc;
+    position: sticky;
+    top: 0;
 }
 
 .user {
-    border: 2px dashed blue;
+    background: #f7f7f7;
+    border: 1px solid #c9bdbd;
+    border-radius: 30px;
     padding: 20px;
-    margin-bottom: 5px;
+    margin: 10px;
 }
 
 .user img {
