@@ -3,7 +3,7 @@
     border: 3px solid #ff3030;
 }
 
-.form.error span {
+.form.error div {
     color: #ff3030;
 }
 

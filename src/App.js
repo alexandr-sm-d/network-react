@@ -99,7 +99,10 @@ class App extends React.Component {
                             <Footer className={classesStyle.foot}>
                                 <div className={classesStyle.content}>
                                     <a href='https://github.com/alexandr-sm-d'>
-                                        <GithubFilled style={{paddingRight : '10px'}}/>
+                                        <GithubFilled style={{
+                                            paddingRight : '10px',
+                                            color: '#233C47',
+                                        }}/>
                                     </a>
                                     <InstagramOutlined style={{paddingRight : '10px'}}/>
                                     <FacebookOutlined style={{paddingRight : '10px'}}/>

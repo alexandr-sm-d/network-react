@@ -4,7 +4,7 @@ import classesStyle from './../Dialogs.module.css'
 const MessageItem = (props) => {
     return (
         <div className={classesStyle.messageItem}>
-            {props.message}
+            <span className={classesStyle.mBody}>{props.message}</span>
         </div>
     )
 }

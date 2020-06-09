@@ -5,7 +5,7 @@ import classesStyle from './../Dialogs.module.css';
 const DialogItem = (props) => {
     let path = '/dialogs/' + props.id;
     return (
-        <div className={`${classesStyle.dialogItem} ${classesStyle.active}`}>
+        <div className={classesStyle.dialogItem}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     )

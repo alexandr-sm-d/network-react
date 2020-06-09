@@ -29,6 +29,7 @@
     font-family: 'Zilla Slab', 'Ubuntu Condensed', sans-serif;
     background: #e0dcdc;
     width: 50%;
+    position: relative;
 }
 
 .contentAtdn::-webkit-scrollbar { width: 0; }

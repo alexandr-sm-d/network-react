@@ -1,24 +1,82 @@
 .dialogsWrapper {
-    display: grid;
-    grid-template-columns: 5fr 15fr;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
 }
 
 .dialogUsers {
-    background-color: darksalmon;
-    padding: 10px;
-}
-
-.dialogUsers .active {
-    color: gold;
+    padding: 10px 5px;
+    width: 30%;
+    display: inline-block;
+    background-color: inherit;
+    border-right: 1px solid gray;
+    overflow: auto;
+    height: 100%;
 }
 
 .dialogMessages {
-    background-color: darkseagreen;
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: inherit;
     padding: 10px;
+    overflow: auto;
+    height: 100%;
+}
+
+.textarea {
+    composes: textarea from "./../../common/FormsControls/FormsControls.module.css";
+    border-radius: 0px;
 }
 
 .dialogItem {
-    border: 1px solid red;
+    background: #faf5f5;
     margin-bottom: 3px;
     padding: 5px 5px;
+}
+
+.dialogUsers a {
+    color: #424445;
+    text-decoration: none;
+    transition: color .3s;
+
+}
+
+.messageItem {
+    text-align: right;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.mBody {
+    border-radius: 10px;
+    background-color: #faf5f5;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.dialogsForm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.sendMessageButton {
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.sendMessageButton,
+.sendMessageButton:active,
+.sendMessageButton:focus {
+    outline: none;
+}
+
+.submitMessage {
+    border: none;
+    background: white;
 }
