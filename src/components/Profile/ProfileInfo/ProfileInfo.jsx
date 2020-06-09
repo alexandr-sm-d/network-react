@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classesStyle from './ProfileInfo.module.css';
 import Preloader from '../../../common/preloader/Preloader';
 import ProfileStatusHooks from './ProfileStatusHooks';
 import userPhoto from '../../../assets/images/us.png';
 import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
+import ProfileData from "./ProfileData/ProfileData";
+import ProfileDataForm from "./ProfileData/ProfileDataForm";
 
 
 const ProfileInfo = (props) => {
+    const [editMode, setEditMode] = useState(false)
+
     if (!props.profile) {
         return (
             <Preloader/>
@@ -27,7 +31,7 @@ const ProfileInfo = (props) => {
                     {!props.isOwner &&
                     <div className={classesStyle.fileform}>
                         <div className={classesStyle.selectbutton}>
-                            <UploadOutlined />
+                            <UploadOutlined/>
                             change photo
                         </div>
                         <input type="file" onChange={setMainPhoto}/>
@@ -36,6 +40,9 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={classesStyle.information}>
                     <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                    {editMode
+                        ? <ProfileDataForm profile={props.profile}/>
+                        : <ProfileData profile={props.profile} goToEditMode={() => setEditMode(true)}/>}
                 </div>
             </div>
         </div>
