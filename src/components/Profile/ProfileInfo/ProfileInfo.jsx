@@ -39,9 +39,12 @@ const ProfileInfo = (props) => {
                     }
                 </div>
                 <div className={classesStyle.information}>
+                    <div className={classesStyle.fullName}>
+                        <b>{props.profile.fullName}</b>
+                    </div>
                     <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
                     {editMode
-                        ? <ProfileDataForm profile={props.profile}/>
+                        ? <ProfileDataForm profile={props.profile} goToViewMode={() => setEditMode(false)}/>
                         : <ProfileData profile={props.profile} goToEditMode={() => setEditMode(true)}/>}
                 </div>
             </div>

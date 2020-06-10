@@ -8,9 +8,6 @@ const ProfileData = (props) => {
                 <button onClick={props.goToEditMode}>Edit</button>
             </div>
             <div>
-                <b>Full name:</b> {props.profile.fullName}
-            </div>
-            <div>
                 {Object.keys(props.profile.contacts).map(key => {
                     return <Contact
                         contactKey={key}

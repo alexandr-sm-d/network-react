@@ -5,6 +5,7 @@ const ProfileDataForm = (props) => {
     return (
         <div>
            Form
+            <button onClick={props.goToViewMode}>Submit</button>
         </div>
     )
 }

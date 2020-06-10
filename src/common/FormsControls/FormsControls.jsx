@@ -9,7 +9,7 @@ const FormControl = ({input, meta, ...props}) => {
             <div>
                 {props.children}
             </div>
-            {hasError && <div style={{background: '#cbd2d6'}}>
+            {hasError && <div style={{background: '#E0DCDC'}}>
                 <WarningOutlined/>
                 {meta.error}
                 <WarningOutlined/>
