@@ -60,11 +60,15 @@ const apiDAL = {
         login(payload) {
             return instanceOfAxios.post('auth/login', {
                 ...payload,
-                rememberMe: payload.rememberMe || false
+                rememberMe: payload.rememberMe || false,
+                captcha: payload.captcha || null,
             })
         },
         logout() {
             return instanceOfAxios.delete('auth/login')
+        },
+        getCaptcha() {
+            return instanceOfAxios.get('/security/get-captcha-url')
         }
     }
 }

@@ -1,14 +1,16 @@
 import apiDAL from "../../apiDAL/apiDAL";
-import { stopSubmit } from "redux-form";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const DELETE_USER_DATA = 'DELETE_USER_DATA';
+const GET_CAPTCHA_SUCCESS = 'GET_CAPTCHA_SUCCESS'
 
 const initialState = {
     id: null,
     email: null,
     login: null,
     isAuth: false,
+    captcha: null,
 }
 
 const reducerAuthUser = (state = initialState, action) => {
@@ -17,6 +19,13 @@ const reducerAuthUser = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.dataFromResponse,
+            }
+        }
+        case GET_CAPTCHA_SUCCESS: {
+            debugger
+            return {
+                ...state,
+                captcha: action.dataFromResponse,
             }
         }
         case DELETE_USER_DATA: {
@@ -36,7 +45,9 @@ export const setAuthUserDataAC = (dataFromResponse) => ({
     }
 });
 
-export const deleteAuthUserData = (dataFromResponse) => ({ type: SET_USER_DATA, dataFromResponse });
+export const deleteAuthUserData = (dataFromResponse) => ({type: SET_USER_DATA, dataFromResponse});
+export const getCaptchaSuccess = (dataFromResponse) => ({type: GET_CAPTCHA_SUCCESS, dataFromResponse});
+
 
 export const getAuthUserDataTC = () => {
     return (dispatch) => {
@@ -59,7 +70,9 @@ export const login = (data) => { // loginTC
                 if (response.data.resultCode === 0) {
                     dispatch(getAuthUserDataTC())
                 } else {
-                    // debugger
+                    if (response.data.resultCode === 10) {
+                        dispatch(getCaptcha())
+                    }
                     const message = response.data.messages.length
                         ? response.data.messages[0]
                         : 'some error'
@@ -78,6 +91,17 @@ export const logout = () => { // loginTC
                 if (response.data.resultCode === 0) {
                     dispatch(deleteAuthUserData(initialState))
                 }
+            })
+    }
+}
+
+export const getCaptcha = () => {
+    return dispatch => {
+        apiDAL.authAPI.getCaptcha()
+            .then(response => {
+                const captchaURL = response.data.url
+                debugger
+                dispatch(getCaptchaSuccess(captchaURL))
             })
     }
 }

@@ -14,9 +14,9 @@
     color: red;
 }
 
-/*.nameField, .passwordField {*/
-/*    height: 30px;*/
-/*    width: 300px;*/
-/*    margin: 5px;*/
-/*}*/
+.captcha {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
 

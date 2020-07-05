@@ -4,7 +4,8 @@ import {Field, reduxForm} from 'redux-form'
 import {Input, Textarea} from "../../../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import classesStyle from "../../../Login/Login.module.css";
+import classesStyle from "./ProfileDataForm.module.css";
+
 
 const ProfileDataEditMode = (props) => {
     return (

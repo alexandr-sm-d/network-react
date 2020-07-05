@@ -17,7 +17,7 @@ const Login = (props) => {
     return (
         <div className={classesStyle.loginPage}>
             <h3 className={classesStyle.sentence}>You need to login in this app!</h3>
-            <LoginReduxForm onSubmit={login}/>
+            <LoginReduxForm onSubmit={login} captchaURL={props.captchaURL}/>
         </div>
     )
 }
@@ -65,6 +65,14 @@ const LoginForm = (props) => {
             <div>
                 <button>Log in</button>
             </div>
+            <div className={classesStyle.captcha}>
+                {props.captchaURL && <Field placeholder={'Enter symbols from image'}
+                                            component={Input} name={'captcha'}
+                />}
+            </div>
+            <div className={classesStyle.captcha}>
+                {props.captchaURL && <img src={props.captchaURL}/>}
+            </div>
         </form>
     )
 }
@@ -74,7 +82,8 @@ const LoginReduxForm = reduxForm({
 })(LoginForm)
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaURL: state.auth.captcha,
 })
 
 export default connect(mapStateToProps, {login})(Login);
