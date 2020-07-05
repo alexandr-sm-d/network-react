@@ -123,9 +123,12 @@ export const setMainPhoto = (file) => {
 }
 
 export const saveProfileInfo = (formData) => {
-    return async (dispatch) => {
-        let response = await apiDAL.profileAPI.saveProfileInfo(formData)
-        console.log(response)
+    return async (dispatch, getState) => {
+        const userID = getState().auth.id
+        const response = await apiDAL.profileAPI.saveProfileInfo(formData)
+        if (response.resultCode === 0) {
+            dispatch(getProfile(userID))
+        }
     }
 }
 

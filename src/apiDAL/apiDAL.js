@@ -26,6 +26,7 @@ const apiDAL = {
 
     profileAPI: {
         getProfile(userID) {
+            debugger
             return instanceOfAxios.get(`profile/` + userID)
         },
         getUserStatus(userID) {
@@ -47,8 +48,9 @@ const apiDAL = {
                     return resp.data
                 })
         },
-        saveProfileInfo(formData) {
-            return instanceOfAxios.put('profile', formData)
+        async saveProfileInfo(formData) {
+            const response = await instanceOfAxios.put('profile', formData)
+            return response.data
         }
     },
 
