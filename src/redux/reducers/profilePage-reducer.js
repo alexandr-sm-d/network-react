@@ -122,4 +122,11 @@ export const setMainPhoto = (file) => {
     }
 }
 
+export const saveProfileInfo = (formData) => {
+    return async (dispatch) => {
+        let response = await apiDAL.profileAPI.saveProfileInfo(formData)
+        console.log(response)
+    }
+}
+
 export default reducerProfilePage;

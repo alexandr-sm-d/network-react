@@ -6,6 +6,7 @@ import userPhoto from '../../../assets/images/us.png';
 import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm";
+import ProfileDataEditMode from "./ProfileData/ProfileDataForm";
 
 
 const ProfileInfo = (props) => {
@@ -19,6 +20,11 @@ const ProfileInfo = (props) => {
 
     const setMainPhoto = (e) => {
         props.setMainPhoto(e.target.files[0])
+    }
+
+    const saveInfo = formData => {
+        props.saveProfileInfo(formData)
+        setEditMode(false)
     }
 
     return (
@@ -44,7 +50,7 @@ const ProfileInfo = (props) => {
                     </div>
                     <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
                     {editMode
-                        ? <ProfileDataForm profile={props.profile} goToViewMode={() => setEditMode(false)}/>
+                        ? <ProfileDataEditMode saveInfo={saveInfo}/>
                         : <ProfileData profile={props.profile} goToEditMode={() => setEditMode(true)}/>}
                 </div>
             </div>

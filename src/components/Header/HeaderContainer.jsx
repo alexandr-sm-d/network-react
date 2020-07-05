@@ -12,7 +12,6 @@ class HeaderContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('mpst Header');
     return {
         login: state.auth.login,
         isAuth: state.auth.isAuth,

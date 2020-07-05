@@ -53,9 +53,10 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <Field
+                    style={{position: 'relative', top: '2px'}}
                     type="checkbox"
-                    component={Input}
-                    name={"rememberMe"}/>remember me
+                    component={'input'}
+                    name={"rememberMe"}/> remember me
             </div>
             {props.error &&
             <div className={classesStyle.commonError}>

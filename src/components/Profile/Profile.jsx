@@ -11,6 +11,7 @@ function Profile(props) {
                          updateUserStatus={props.updateUserStatus}
                          isOwner={props.match.params.userID}
                          setMainPhoto={props.setMainPhoto}
+                         saveProfileInfo={props.saveProfileInfo}
             />
             <MyPostsContainer/>
         </div>

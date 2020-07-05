@@ -46,6 +46,9 @@ const apiDAL = {
                 .then((resp) => {
                     return resp.data
                 })
+        },
+        saveProfileInfo(formData) {
+            return instanceOfAxios.put('profile', formData)
         }
     },
 
