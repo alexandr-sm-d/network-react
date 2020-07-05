@@ -26,7 +26,6 @@ const apiDAL = {
 
     profileAPI: {
         getProfile(userID) {
-            debugger
             return instanceOfAxios.get(`profile/` + userID)
         },
         getUserStatus(userID) {

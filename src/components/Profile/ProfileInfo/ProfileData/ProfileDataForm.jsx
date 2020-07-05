@@ -4,6 +4,7 @@ import {Field, reduxForm} from 'redux-form'
 import {Input, Textarea} from "../../../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import classesStyle from "../../../Login/Login.module.css";
 
 const ProfileDataEditMode = (props) => {
     return (
@@ -51,14 +52,23 @@ const ProfileDataForm = (props) => {
                 <b>Contacts:</b>
             </div>
             {Object.keys(props.profile.contacts).map(key => {
-                return <Contact
-                    contactKey={key}
-                    contactValue={props.profile.contacts[key]}
-                />
+                return <div>
+                    <b>{key}: </b>
+                    <Field
+                        placeholder={key}
+                        component={Input}
+                        type={'text'}
+                        name={'contacts.' + key}
+                    />
+                </div>
             })}
             <div>
                 <button>Save</button>
             </div>
+            {props.error &&
+            <div className={classesStyle.commonError}>
+                {props.error}
+            </div>}
         </form>
     )
 }

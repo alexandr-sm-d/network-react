@@ -1,4 +1,5 @@
 import apiDAL from "../../apiDAL/apiDAL";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -126,8 +127,14 @@ export const saveProfileInfo = (formData) => {
     return async (dispatch, getState) => {
         const userID = getState().auth.id
         const response = await apiDAL.profileAPI.saveProfileInfo(formData)
+        debugger
         if (response.resultCode === 0) {
             dispatch(getProfile(userID))
+        } else {
+            dispatch(stopSubmit('profile-info', {
+                _error: response.messages[0],
+            }))
+            return Promise.reject(response.messages[0])
         }
     }
 }
