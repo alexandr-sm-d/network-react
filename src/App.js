@@ -4,7 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
-import {Link, Route, withRouter} from 'react-router-dom';
+import {Link, Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
@@ -17,13 +17,14 @@ import {intitializingTC} from './redux/reducers/app-reducer';
 import Preloader from './common/preloader/Preloader';
 import 'antd/dist/antd.css'
 import {Layout} from "antd";
-import classesStyle from "./AppAntd.module.css";
+import style from "./AppAntd.module.css";
 import {InstagramOutlined, GithubFilled, FacebookOutlined} from "@ant-design/icons";
 
 const {Header, Footer, Sider, Content} = Layout;
 const Dev = React.lazy(() => import('./components/Dev/Dev'))
 
 class App extends React.Component {
+
     componentDidMount() {
         this.props.intitializing()
     }
@@ -38,74 +39,50 @@ class App extends React.Component {
             }
         }
 
-        // return (
-        //     <div className='wrapper'>
-        //         <div className='container'>
-        //             <HeaderContainer />
-        //             <Navigation />
-        //             <div className="content-container">
-        //                 <main className='content'>
-        //                     <Route path='/profile/:userID?' render={() => <ProfileContainer />} />
-        //                     <Route path='/users' render={() => <UsersContainer />} />
-        //                     <Route path='/dialogs' render={() => <DialogsContainer />} />
-        //                     <Route path='/musicList' component={Music} />
-        //                     <Route path='/settingsApp' component={Settings} />
-        //                     <Route path='/login' component={Login} />
-        //                     <Route path='/dev' render={() =>
-        //                         <Suspense fallback={<div>Loading...</div>}>
-        //                             <Dev />
-        //                         </Suspense>
-        //                     } />
-        //                 </main>
-        //             </div>
-        //             <footer className='foot'>
-        //
-        //             </footer>
-        //         </div>
-        //     </div>
-        // );
-
         return (
-            <div className={classesStyle.container}>
-                <div className={classesStyle.mainCol}>
+            <div className={style.container}>
+                <div className={style.mainCol}>
                     <div style={{width: '60%'}}>
-                        <Layout className={classesStyle.layout}>
-                            <Header className={classesStyle.headerAtdn}>
+                        <Layout className={style.layout}>
+                            <Header className={style.headerAtdn}>
                                 <HeaderContainer/>
                             </Header>
 
                             <Layout>
-                                <Sider className={classesStyle.navigationAtdn}>
-                                    <Navigation />
+                                <Sider className={style.navigationAtdn}>
+                                    <Navigation/>
                                 </Sider>
 
-                                <Content className={classesStyle.contentAtdn}>
+                                <Content className={style.contentAtdn}>
                                     <main>
-                                        <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
-                                        <Route path='/users' render={() => <UsersContainer/>}/>
-                                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                                        <Route path='/musicList' component={Music}/>
-                                        <Route path='/settingsApp' component={Settings}/>
-                                        <Route path='/login' component={Login}/>
-                                        <Route path='/dev' render={() =>
-                                            <Suspense fallback={<div>Loading...</div>}>
-                                                <Dev/>
-                                            </Suspense>
-                                        }/>
+                                        <Switch>
+                                            <Route exact path='/' render={() => <Redirect to='/profile'/>}/>
+                                            <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
+                                            <Route path='/users' render={() => <UsersContainer/>}/>
+                                            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                                            <Route path='/musicList' component={Music}/>
+                                            <Route path='/settingsApp' component={Settings}/>
+                                            <Route path='/login' component={Login}/>
+                                            <Route path='/dev' render={() =>
+                                                <Suspense fallback={<div>Loading...</div>}>
+                                                    <Dev/>
+                                                </Suspense>
+                                            }/>
+                                        </Switch>
                                     </main>
                                 </Content>
                             </Layout>
 
-                            <Footer className={classesStyle.foot}>
-                                <div className={classesStyle.content}>
+                            <Footer className={style.foot}>
+                                <div className={style.content}>
                                     <a href='https://github.com/alexandr-sm-d'>
                                         <GithubFilled style={{
-                                            paddingRight : '10px',
+                                            paddingRight: '10px',
                                             color: '#233C47',
                                         }}/>
                                     </a>
-                                    <InstagramOutlined style={{paddingRight : '10px'}}/>
-                                    <FacebookOutlined style={{paddingRight : '10px'}}/>
+                                    <InstagramOutlined style={{paddingRight: '10px'}}/>
+                                    <FacebookOutlined style={{paddingRight: '10px'}}/>
                                 </div>
                             </Footer>
                         </Layout>

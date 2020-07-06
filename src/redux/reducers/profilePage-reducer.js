@@ -1,5 +1,5 @@
 import apiDAL from "../../apiDAL/apiDAL";
-import { stopSubmit } from "redux-form";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -102,15 +102,16 @@ export const getUserStatus = (userID) => {
     }
 }
 
-export const updateUserStatus = (status) => {
-    return (dispatch) => {
-        apiDAL.profileAPI.updateStatus(status)
-            .then(resp => {
-                if (resp.data.resultCode === 0)
-                    dispatch(setUserStatus(status))
-            })
+export const updateUserStatus = (status) => async (dispatch) => {
+    try {
+        const response = await apiDAL.profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0)
+            dispatch(setUserStatus(status))
+    } catch (error) {
+        console.error(error)
     }
 }
+
 
 export const setMainPhoto = (file) => {
     return (dispatch) => {

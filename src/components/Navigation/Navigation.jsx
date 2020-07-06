@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import classesStyle from './Navigation.module.css';
+import style from './Navigation.module.css';
 import {
     ProfileOutlined,
     TeamOutlined,
@@ -12,40 +12,40 @@ import {
 
 const Navigation = () => {
     return (
-        <nav className={classesStyle.nav}>
-            <NavLink to='/profile' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <ProfileOutlined className={classesStyle.navigationIcon}/>
+        <nav className={style.nav}>
+            <NavLink to='/profile' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <ProfileOutlined className={style.navigationIcon}/>
                     Profile
                 </div>
             </NavLink>
-            <NavLink to='/users' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <TeamOutlined className={classesStyle.navigationIcon}/>
+            <NavLink to='/users' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <TeamOutlined className={style.navigationIcon}/>
                     Users
                 </div>
             </NavLink>
-            <NavLink to='/dialogs' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <MessageOutlined className={classesStyle.navigationIcon}/>
+            <NavLink to='/dialogs' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <MessageOutlined className={style.navigationIcon}/>
                     Message
                 </div>
             </NavLink>
-            <NavLink to='/musicList' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <BellOutlined className={classesStyle.navigationIcon}/>
+            <NavLink to='/musicList' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <BellOutlined className={style.navigationIcon}/>
                     Music
                 </div>
             </NavLink>
-            <NavLink to='/settingsApp' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <SettingOutlined className={classesStyle.navigationIcon}/>
+            <NavLink to='/settingsApp' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <SettingOutlined className={style.navigationIcon}/>
                     Settings
                 </div>
             </NavLink>
-            <NavLink to='/dev' activeClassName={classesStyle.activeLink}>
-                <div className={classesStyle.item}>
-                    <RocketOutlined className={classesStyle.navigationIcon}/>
+            <NavLink to='/dev' activeClassName={style.activeLink}>
+                <div className={style.item}>
+                    <RocketOutlined className={style.navigationIcon}/>
                     Dev
                 </div>
             </NavLink>

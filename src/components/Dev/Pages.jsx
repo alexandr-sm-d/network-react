@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import classesStyle from './Pages.module.css'
+import style from './Pages.module.css'
 
 const Pages = props => {
 
@@ -32,19 +32,19 @@ const Pages = props => {
     }
 
     return (
-        <div className={classesStyle.pages}>
+        <div className={style.pages}>
             <button onClick={back}
-                    className={classesStyle.buttons}
+                    className={style.buttons}
                     disabled={valueOfDisabledForButtonBack}
             >back
             </button>
             {pages
                 .filter(page => page >= leftBorderPage && page <= rightBorderPage)
                 .map(page => {
-                    return (<span className={classesStyle.page}>{page}</span>)
+                    return (<span className={style.page}>{page}</span>)
                 })}
             <button onClick={next}
-                    className={classesStyle.buttons}
+                    className={style.buttons}
                     disabled={valueOfDisabledForButtonNext}
             >next
             </button>

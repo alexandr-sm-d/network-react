@@ -4,7 +4,7 @@ import {Field, reduxForm} from 'redux-form'
 import {Input, Textarea} from "../../../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import classesStyle from "./ProfileDataForm.module.css";
+import style from "./ProfileDataForm.module.css";
 
 
 const ProfileDataEditMode = (props) => {
@@ -53,7 +53,7 @@ const ProfileDataForm = (props) => {
                 <b>Contacts:</b>
             </div>
             {Object.keys(props.profile.contacts).map(key => {
-                return <div>
+                return <div key={key}>
                     <b>{key}: </b>
                     <Field
                         placeholder={key}
@@ -67,7 +67,7 @@ const ProfileDataForm = (props) => {
                 <button>Save</button>
             </div>
             {props.error &&
-            <div className={classesStyle.commonError}>
+            <div className={style.commonError}>
                 {props.error}
             </div>}
         </form>

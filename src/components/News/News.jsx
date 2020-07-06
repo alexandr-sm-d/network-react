@@ -1,9 +1,9 @@
 import React from 'react';
-import classesStyle from './News.module.css'
+import style from './News.module.css'
 
 const News = () => {
     return (
-        <div className={classesStyle.n}>
+        <div className={style.n}>
             <h4>
                 News today:
             </h4>

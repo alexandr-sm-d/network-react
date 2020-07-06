@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classesStyle from './Paginator.module.css';
+import style from './Paginator.module.css';
 
 const Paginator = (props) => {
 
@@ -32,9 +32,9 @@ const Paginator = (props) => {
     }
 
     return (
-        <div className={classesStyle.toggle_page}>
+        <div className={style.toggle_page}>
             <button onClick={back}
-                    className={classesStyle.buttons}
+                    className={style.buttons}
                     disabled={valueOfDisabledForButtonBack}
             >back
             </button>
@@ -43,12 +43,12 @@ const Paginator = (props) => {
                 .filter(page => page >= leftBorderPage && page <= rightBorderPage)
                 .map((p) => {
                     return <span
-                        className={ props.currentPage === p && classesStyle.selected}
+                        className={ props.currentPage === p && style.selected}
                         onClick={() => props.onPageChanged(p)}>{p}</span>
                 })}
 
             <button onClick={next}
-                    className={classesStyle.buttons}
+                    className={style.buttons}
                     disabled={valueOfDisabledForButtonNext}>
                 next
             </button>

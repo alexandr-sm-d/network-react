@@ -5,7 +5,7 @@ import Pages from './Pages';
 import ChoiseFile from './ChoiseFile';
 import UseCallback from "./useCallback/UseCallback";
 import {Button, Layout} from "antd";
-import classesStyle from './Dev.module.css';
+import style from './Dev.module.css';
 import {
     HomeOutlined,
     SettingFilled,
@@ -28,11 +28,11 @@ const Dev = props => {
             <ChoiseFile />
             <UseCallback />
             <Button type="primary">Primary</Button>
-            <Button className={classesStyle.default}>Default</Button>
+            <Button className={style.default}>Default</Button>
             <Button type="dashed">Dashed</Button>
             <Button type="link">Link</Button>
             <div>
-                <Button className={classesStyle.logIn}>Log In</Button>
+                <Button className={style.logIn}>Log In</Button>
             </div>
 
 
@@ -43,13 +43,13 @@ const Dev = props => {
             {/*<SmileOutlined rotate={180} />*/}
             {/*<LoadingOutlined />*/}
 
-            {/*<Layout className={classesStyle.layout}>*/}
+            {/*<Layout className={style.layout}>*/}
             {/*    <Header>Header</Header>*/}
             {/*    <Layout>*/}
             {/*        <Sider>Sider</Sider>*/}
             {/*        <Content>Content</Content>*/}
             {/*    </Layout>*/}
-            {/*    <Footer className={classesStyle.foot}>Footer</Footer>*/}
+            {/*    <Footer className={style.foot}>Footer</Footer>*/}
             {/*</Layout>*/}
 
             {/*<Button icon={<SendOutlined />}*/}

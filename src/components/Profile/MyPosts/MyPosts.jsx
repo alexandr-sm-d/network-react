@@ -1,5 +1,5 @@
 import React from 'react';
-import classesStyle from './MyPosts.module.css'
+import style from './MyPosts.module.css'
 import Post from './Post/Post';
 import {reduxForm, Field} from 'redux-form';
 import {validatorEmptyPost, validatorMaxLength} from '../../../utlis/validators/validatorsProfile';
@@ -21,14 +21,15 @@ const MyPosts = (props) => {
                   likeCounts={p.likeCounts}
                   deletePost={props.deletePost}
                   profile={props.profile}
+                  key={p.id}
             />)
         .reverse();
 
     return (
-        <div className={classesStyle.myPost}>
+        <div className={style.myPost}>
             <h2>My posts</h2>
             <MyPostsForm onSubmit={addPost}/>
-            <div className={classesStyle.posts}>
+            <div className={style.posts}>
                 {posts}
             </div>
         </div>
@@ -39,15 +40,15 @@ let MyPostsForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <div className={classesStyle.newPost}>
+            <div className={style.newPost}>
                 <Field
                     component={Textarea}
                     name="postForSubmit"
                     placeholder="Enter your post"
                     validate={[validatorEmptyPost, maxLength50]}
                 />
-                <div className={classesStyle.addPostButton}>
-                    <button className={classesStyle.submitPost}>
+                <div className={style.addPostButton}>
+                    <button className={style.submitPost}>
                         <SendOutlined/>
                     </button>
                 </div>

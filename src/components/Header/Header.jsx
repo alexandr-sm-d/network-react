@@ -1,5 +1,5 @@
 import React from 'react';
-import classesStyle from './Header.module.css'
+import style from './Header.module.css'
 import LogInOut from "./LogInOut";
 import {Button} from "antd";
 
