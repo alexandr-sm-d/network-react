@@ -5,6 +5,8 @@ import {Input, Textarea} from "../../../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import style from "./ProfileDataForm.module.css";
+import {Button} from "antd";
+
 
 
 const ProfileDataEditMode = (props) => {
@@ -63,8 +65,8 @@ const ProfileDataForm = (props) => {
                     />
                 </div>
             })}
-            <div>
-                <button>Save</button>
+            <div className={style.submitButton}>
+                <Button type="primary" onClick={props.handleSubmit}>Save</Button>
             </div>
             {props.error &&
             <div className={style.commonError}>
