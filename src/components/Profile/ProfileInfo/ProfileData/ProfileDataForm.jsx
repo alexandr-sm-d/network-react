@@ -5,11 +5,7 @@ import {Input, Textarea} from "../../../../common/FormsControls/FormsControls";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import style from "./ProfileDataForm.module.css";
-<<<<<<< HEAD
 import {Button} from "antd";
-
-=======
->>>>>>> 59dd628... refactoring..added keys
 
 
 const ProfileDataEditMode = (props) => {
