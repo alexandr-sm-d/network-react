@@ -27,7 +27,6 @@ const MyPosts = (props) => {
 
     return (
         <div className={style.myPost}>
-            <h2>My posts</h2>
             <MyPostsForm onSubmit={addPost}/>
             <div className={style.posts}>
                 {posts}
