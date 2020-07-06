@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classesStyle from './ProfileInfo.module.css';
+import style from './ProfileInfo.module.css';
 import Preloader from '../../../common/preloader/Preloader';
 import ProfileStatusHooks from './ProfileStatusHooks';
 import userPhoto from '../../../assets/images/us.png';
@@ -29,15 +29,15 @@ const ProfileInfo = (props) => {
     }
 
     return (
-        <div className={classesStyle.content}>
-            <div className={classesStyle.description}>
-                <div className={classesStyle.container_ava}>
-                    <div className={classesStyle.ava}>
+        <div className={style.content}>
+            <div className={style.description}>
+                <div className={style.container_ava}>
+                    <div className={style.ava}>
                         <img src={props.profile.photos.large || userPhoto}/>
                     </div>
                     {!props.isOwner &&
-                    <div className={classesStyle.fileform}>
-                        <div className={classesStyle.selectbutton}>
+                    <div className={style.fileform}>
+                        <div className={style.selectbutton}>
                             <UploadOutlined/>
                             change photo
                         </div>
@@ -45,8 +45,8 @@ const ProfileInfo = (props) => {
                     </div>
                     }
                 </div>
-                <div className={classesStyle.information}>
-                    <div className={classesStyle.fullName}>
+                <div className={style.information}>
+                    <div className={style.fullName}>
                         <b>{props.profile.fullName}</b>
                     </div>
                     <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>

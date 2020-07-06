@@ -1,5 +1,7 @@
 import React from 'react'
 import Contact from "./Contact/Contact";
+import {Button} from "antd";
+
 
 const ProfileData = (props) => {
     // debugger
@@ -16,12 +18,13 @@ const ProfileData = (props) => {
             </div>
             {Object.keys(props.profile.contacts).map(key => {
                 return <Contact
+                    key={key}
                     contactKey={key}
                     contactValue={props.profile.contacts[key]}
                 />
             })}
             <div>
-                <button onClick={props.goToEditMode}>Edit</button>
+                <Button type="primary" onClick={props.goToEditMode}>Edit</Button>
             </div>
         </div>
     )

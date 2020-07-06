@@ -1,9 +1,9 @@
 import React from "react";
-import classesStyle from './Contact.module.css'
+import style from './Contact.module.css'
 
 const Contact = ({contactKey, contactValue}) => {
     return (
-        <div className={classesStyle.contact}>
+        <div className={style.contact}>
             <b>{contactKey}: </b>{contactValue}
         </div>
     )

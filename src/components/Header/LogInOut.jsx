@@ -3,16 +3,16 @@ import userPhoto from "../../assets/images/us.png";
 import {LoadingOutlined, LoginOutlined, LogoutOutlined} from "@ant-design/icons";
 import {Button} from "antd";
 import {NavLink} from "react-router-dom";
-import classesStyle from './LogInOut.module.css'
+import style from './LogInOut.module.css'
 
 const LogInOut = (props) => {
     return (
-        <div className={classesStyle.authIsLogin}>
+        <div className={style.authIsLogin}>
             {(props.isAuth)
                 ? <div>
                         <span>
                             {(props.photo)
-                                ? <img className={classesStyle.photoLogin} src={props.photo.photos.small || userPhoto}/>
+                                ? <img className={style.photoLogin} src={props.photo.photos.small || userPhoto}/>
                                 : <LoadingOutlined style={{marginRight: '10px',}}/>
                             }
                                 </span>

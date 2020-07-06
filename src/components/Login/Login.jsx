@@ -5,7 +5,7 @@ import {validatorEmptyPost} from '../../utlis/validators/validatorsProfile';
 import {login} from '../../redux/reducers/auth-reducer';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import classesStyle from './Login.module.css';
+import style from './Login.module.css';
 
 const Login = (props) => {
     const login = (formData) => {
@@ -15,8 +15,8 @@ const Login = (props) => {
     if (props.isAuth) return <Redirect to="/profile"/>
 
     return (
-        <div className={classesStyle.loginPage}>
-            <h3 className={classesStyle.sentence}>You need to login in this app!</h3>
+        <div className={style.loginPage}>
+            <h3 className={style.sentence}>You need to login in this app!</h3>
             <LoginReduxForm onSubmit={login} captchaURL={props.captchaURL}/>
         </div>
     )
@@ -30,7 +30,7 @@ const LoginForm = (props) => {
                     style={{
                         height: '30px',
                     }}
-                    // className={classesStyle.passwordField}
+                    // className={style.passwordField}
                     type="text"
                     placeholder="Enter your email"
                     component={Input}
@@ -43,7 +43,7 @@ const LoginForm = (props) => {
                         height: '30px',
                         marginTop: '10px',
                     }}
-                    // className={classesStyle.nameField}
+                    // className={style.nameField}
                     type="text"
                     placeholder="Enter your password"
                     component={Input}
@@ -59,18 +59,18 @@ const LoginForm = (props) => {
                     name={"rememberMe"}/> remember me
             </div>
             {props.error &&
-            <div className={classesStyle.commonError}>
+            <div className={style.commonError}>
                 {props.error}
             </div>}
             <div>
                 <button>Log in</button>
             </div>
-            <div className={classesStyle.captcha}>
+            <div className={style.captcha}>
                 {props.captchaURL && <Field placeholder={'Enter symbols from image'}
                                             component={Input} name={'captcha'}
                 />}
             </div>
-            <div className={classesStyle.captcha}>
+            <div className={style.captcha}>
                 {props.captchaURL && <img src={props.captchaURL}/>}
             </div>
         </form>

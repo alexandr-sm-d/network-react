@@ -1,6 +1,6 @@
 import React from 'react';
 import userPhoto from '../../assets/images/us.png';
-import classesStyle from './Users.module.css';
+import style from './Users.module.css';
 import {NavLink} from 'react-router-dom';
 import Paginator from '../../common/paginator/Paginator';
 import {Pagination} from "antd";
@@ -8,7 +8,7 @@ import {Pagination} from "antd";
 const Users = (props) => {
 
     return (
-        <div className={classesStyle.usersPage}>
+        <div className={style.usersPage}>
 
             {/*<Paginator*/}
             {/*    totalCountUsers={props.totalCountUsers}*/}
@@ -18,16 +18,14 @@ const Users = (props) => {
             {/*/>*/}
 
             <Pagination
-                className={classesStyle.pagination}
+                className={style.pagination}
                 onChange={props.onPageChanged}
                 total={props.totalCountUsers}
             />
 
-            <h1>Hi! I'am before componentDidMount</h1>
-
             {props.users.map((u) => (
-                <div className={classesStyle.user}>
-                    <div className={classesStyle.photo}>
+                <div className={style.user} key={u.id}>
+                    <div className={style.photo}>
                         <NavLink to={'/profile/' + u.id}>
                             <img src={
                                 u.photos.large != null
@@ -38,18 +36,18 @@ const Users = (props) => {
                         {u.followed
                             ?
                             <button
-                                className={classesStyle.follow}
+                                className={style.follow}
                                 disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                 props.unfollow(u.id);
                             }}>unfollow</button>
                             :
                             <button
-                                className={classesStyle.unfollow}
+                                className={style.unfollow}
                                 disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                 props.follow(u.id);
                             }}>follow</button>}
                     </div>
-                    <div className={classesStyle.info}>
+                    <div className={style.info}>
                         <div>
                             <b>{u.name}</b>
                         </div>
